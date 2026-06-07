@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="GoPlayHK - AI-Powered Sports Matchmaking and Booking in Hong Kong">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#FC9905" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#041E42" media="(prefers-color-scheme: dark)">
+    <title>GoPlayHK - Smart Sports for All</title>
+    <link rel="preload" as="image" href="https://i.ibb.co/pvsn9KB9/Screenshot-2025-10-19-114822-1-1-1-1-1-11zon-11zon-2.webp">
+    <style>
+        :root {
+            --font-body-stack: "Aptos", "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+            --font-display-stack: "Aptos Display", "Segoe UI", "Trebuchet MS", system-ui, sans-serif;
+            --safe-area-top: env(safe-area-inset-top, 0px);
+            --safe-area-right: env(safe-area-inset-right, 0px);
+            --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+            --safe-area-left: env(safe-area-inset-left, 0px);
+        }
+        .splash-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            height: 100dvh;
+            padding: var(--safe-area-top) var(--safe-area-right) var(--safe-area-bottom) var(--safe-area-left);
+            box-sizing: border-box;
+            background:
+                radial-gradient(circle at 18% 20%, rgba(252, 153, 5, 0.26), transparent 34%),
+                radial-gradient(circle at 82% 18%, rgba(0, 178, 158, 0.18), transparent 28%),
+                linear-gradient(145deg, #020816 0%, #07162a 48%, #0b2240 100%);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            overflow: hidden;
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .splash-screen.exiting { opacity: 0; transform: scale(0.95); }
+        .splash-logo-container { animation: fadeIn 1.2s ease-out; margin-bottom: 20px; }
+        .splash-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.82);
+            font-family: var(--font-body-stack);
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .splash-logo {
+            width: 180px;
+            height: 180px;
+            border-radius: 15%;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            object-fit: contain;
+            animation: pulse 2s infinite ease-in-out;
+        }
+        .splash-title { font-size: 1.5rem; font-weight: 700; font-family: var(--font-display-stack); animation: fadeIn 1.2s ease-out .5s both; }
+        .splash-subtitle { font-size: 1.1rem; color: rgba(255, 255, 255, 0.8); font-family: var(--font-body-stack); animation: fadeIn 1.2s ease-out .7s both; }
+        .splash-bar {
+            margin-top: 20px;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, #19d3c5, #fc9905);
+            border-radius: 2px;
+            animation: fadeIn 1.2s ease-out .9s both;
+        }
+        .splash-skip-button {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 1rem;
+            font-family: var(--font-body-stack);
+            font-weight: 500;
+            cursor: pointer;
+            padding: 8px 16px;
+            transition: color .2s, transform .2s;
+        }
+        .splash-skip-button:hover { color: #ffffff; transform: scale(1.05); }
+        .boot-status {
+            margin-top: 18px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.86);
+            letter-spacing: 0.02em;
+            font-family: var(--font-body-stack);
+        }
+        .boot-progress {
+            width: min(240px, 72vw);
+            height: 6px;
+            margin-top: 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.18);
+            overflow: hidden;
+            box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+        .boot-progress-fill {
+            width: 18%;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #FC9905, #FFD166);
+            transition: width 0.35s ease;
+        }
+        .boot-progress-fill.error {
+            background: linear-gradient(90deg, #ef4444, #fca5a5);
+        }
+        @keyframes pulse { 0%, 100% { transform: scale(.95); } 50% { transform: scale(1.1); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px) scale(.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    </style>
+    <link rel="preconnect" href="https://www.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://apis.google.com" crossorigin>
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.google.com" crossorigin>
+    <link rel="preconnect" href="https://goplay-hk-1723d.firebaseapp.com" crossorigin>
+    <link rel="preconnect" href="https://securetoken.googleapis.com" crossorigin>
+</head>
+<body>
+    <main id="root" aria-busy="true"></main>
+    <div id="google_translate_element" aria-hidden="true" style="position:fixed;left:-9999px;top:0;width:1px;height:1px;overflow:hidden;"></div>
+    <div id="boot-splash" class="splash-screen">
+        <div class="splash-logo-container">
+            <img
+                src="https://i.ibb.co/pvsn9KB9/Screenshot-2025-10-19-114822-1-1-1-1-1-11zon-11zon-2.webp"
+                alt="GoPlayHK Logo"
+                class="splash-logo"
+                fetchpriority="high"
+            >
+        </div>
+        <span class="splash-chip">Adaptive Sports Network</span>
+        <h1 class="splash-title">GoPlayHK</h1>
+        <p class="splash-subtitle">Smart Sports for All</p>
+        <div class="splash-bar"></div>
+        <p id="boot-status" class="boot-status">Loading core experience</p>
+        <div class="boot-progress" aria-hidden="true">
+            <div id="boot-progress-fill" class="boot-progress-fill"></div>
+        </div>
+    </div>
+    <script type="module" src="/src/bootstrap.jsx"></script>
+</body>
+</html>

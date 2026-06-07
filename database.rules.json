@@ -1,0 +1,28 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "presence": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "socialRequests": {
+      "$uid": {
+        "incoming": {
+          "$requestId": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && (auth.uid === $uid || newData.child('fromUserId').val() === auth.uid || data.child('fromUserId').val() === auth.uid)"
+          }
+        },
+        "outgoing": {
+          "$requestId": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && (auth.uid === $uid || newData.child('toUserId').val() === auth.uid || data.child('toUserId').val() === auth.uid)"
+          }
+        }
+      }
+    }
+  }
+}

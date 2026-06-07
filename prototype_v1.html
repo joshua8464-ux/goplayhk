@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="GoPlayHK - AI-Powered Sports Matchmaking and Booking in Hong Kong">
+    <meta name="theme-color" content="#FC9905">
+    <title>GoPlayHK - Smart Sports for All</title>
+
+    <!-- Fonts and Icons -->
+    
+    
+    <style type="text/css">@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:300;src:url(/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:900;src:url(/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:900;src:url(/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:900;src:url(/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:900;src:url(/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:900;src:url(/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:900;src:url(/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:Inter;font-style:normal;font-weight:900;src:url(/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2);unicode-range:U+0370-03FF;font-display:swap;}</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <style>
+        :root {
+            --primary: #FC9905; --primary-dark: #e08804; --secondary: #333333;
+            --background-light: #f7f8fa; --background-dark: #121212;
+            --card-light: #ffffff; --card-dark: #1e1e1e;
+            --text-light: #1a1a1a; --text-dark: #f0f0f0;
+            --text-muted-light: #6c757d; --text-muted-dark: #a0a0a0;
+            --border-light: #e9ecef; --border-dark: #333333;
+            --success: #28a745; --danger: #dc3545; --info: #007bff;
+            --warning: #ffc107; --shadow: 0 4px 12px rgba(0,0,0,0.08); --transition-speed: 0.3s;
+        }
+
+        html, body, #root { height: 100%; margin: 0; padding: 0; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--background-light); color: var(--text-light); transition: background-color var(--transition-speed), color var(--transition-speed); overflow: hidden; }
+        .dark { --background-light: var(--background-dark); --card-light: var(--card-dark); --text-light: var(--text-dark); --text-muted-light: var(--text-muted-dark); --border-light: var(--border-dark); --shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+        /* --- Global Styles & Animations --- */
+        .main-container { display: flex; flex-direction: column; height: 100%; width: 100%; max-width: 500px; margin: 0 auto; background-color: var(--background-light); box-shadow: 0 0 20px rgba(0,0,0,0.1); position: relative; }
+        .page-container { flex: 1; overflow-y: auto; padding: 70px 15px 80px 15px; -webkit-overflow-scrolling: touch; }
+        h1, h2, h3 { font-weight: 700; margin-bottom: 0.5em; }
+        h1 { font-size: 1.8rem; } h2 { font-size: 1.4rem; } h3 { font-size: 1.1rem; color: var(--primary); }
+        .btn { padding: 12px 20px; border: none; border-radius: 12px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all var(--transition-speed); text-align: center; }
+        .btn-primary { background-color: var(--primary); color: white; } .btn-primary:hover { background-color: var(--primary-dark); }
+        .btn-secondary { background-color: var(--card-light); color: var(--text-light); border: 1px solid var(--border-light); }
+        .btn-warning { background-color: var(--warning); color: white; }
+        .btn-danger { background-color: var(--danger); color: white; }
+        .btn-full { width: 100%; } .btn-sm { padding: 8px 12px; font-size: 0.9rem; }
+        .btn:disabled { background-color: #ccc; color: #777; cursor: not-allowed; }
+        .card { background-color: var(--card-light); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: var(--shadow); border: 1px solid var(--border-light); }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; font-weight: 500; }
+        .input-group input, .input-group textarea, .input-group select { width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: 10px; background-color: var(--background-light); color: var(--text-light); font-size: 1rem; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .info-icon { margin-left: 8px; color: var(--text-muted-light); cursor: pointer; }
+        .search-bar { margin-bottom: 20px; position: relative; }
+        .search-bar input { padding-right: 40px; }
+        .search-bar i { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted-light); }
+        
+        /* --- Skeleton Loader --- */
+        .skeleton { animation: pulse-bg 1s infinite; background-color: var(--border-light); border-radius: 8px; }
+        @keyframes pulse-bg { 0% { background-color: var(--border-light); } 50% { background-color: #e0e0e0; } 100% { background-color: var(--border-light); } }
+        .dark .skeleton { animation: pulse-bg-dark 1s infinite; }
+        @keyframes pulse-bg-dark { 0% { background-color: var(--border-dark); } 50% { background-color: #444; } 100% { background-color: var(--border-dark); } }
+
+        /* --- Header, Footer, Splash --- */
+        .app-header { position: absolute; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; background-color: var(--card-light); border-bottom: 1px solid var(--border-light); z-index: 100; }
+        .app-header h1 { font-size: 1.5rem; margin: 0; }
+        .header-action { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; position: relative; }
+        .notification-badge { position: absolute; top: 5px; right: 5px; background: var(--danger); color: white; width: 16px; height: 16px; border-radius: 50%; font-size: 10px; display: flex; align-items: center; justify-content: center; }
+        .app-footer { position: absolute; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-around; padding: 10px 0; background-color: var(--card-light); border-top: 1px solid var(--border-light); z-index: 100; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted-light); cursor: pointer; transition: color var(--transition-speed); flex: 1; }
+        .nav-item.active { color: var(--primary); }
+        .nav-item i { font-size: 1.5rem; } .nav-item span { font-size: 0.75rem; margin-top: 4px; }
+        .splash-screen { display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100%; background-color: var(--secondary); color: white; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1000; transition: opacity 0.5s ease; }
+        .splash-logo-container { position: relative; display: flex; justify-content: center; align-items: center; }
+        .splash-logo-shape { width: 150px; height: 150px; background-color: var(--primary); border-radius: 35%; transform: rotate(45deg); animation: pulse 2s infinite; }
+        .splash-logo-text { position: absolute; color: var(--secondary); font-size: 2rem; font-weight: 900; text-align: center; line-height: 1; }
+        @keyframes pulse { 0% { transform: scale(0.95) rotate(45deg); } 50% { transform: scale(1.05) rotate(45deg); } 100% { transform: scale(0.95) rotate(45deg); } }
+
+        /* --- Components --- */
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: flex; align-items: flex-end; justify-content: center; z-index: 1001; }
+        .modal-content { background: var(--card-light); width: 100%; max-width: 500px; padding: 20px; border-radius: 20px 20px 0 0; animation: slideUp 0.3s ease-out; max-height: 85vh; display: flex; flex-direction: column; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h2 { margin: 0; }
+        .floating-button { position: absolute; bottom: 90px; right: 20px; width: 60px; height: 60px; border-radius: 50%; background-color: var(--primary); color: white; display: flex; align-items: center; justify-content: center; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 101; font-size: 1.5rem; cursor: pointer; }
+        .chat-bubble { padding: 10px 15px; border-radius: 18px; margin-bottom: 10px; max-width: 80%; line-height: 1.4; }
+        .chat-bubble.user { background-color: var(--primary); color: white; border-bottom-right-radius: 4px; align-self: flex-end; }
+        .chat-bubble.bot { background-color: var(--border-light); color: var(--text-light); border-bottom-left-radius: 4px; align-self: flex-start; }
+        .detail-header-img { width: 100%; height: 200px; object-fit: cover; border-radius: 16px; margin-bottom: 20px; }
+        .participant-list { display: flex; margin-top: 15px; cursor: pointer; }
+        .participant-avatar { width: 40px; height: 40px; border-radius: 50%; border: 3px solid var(--card-light); object-fit: cover; margin-left: -10px; }
+        .participant-list .participant-avatar:first-child { margin-left: 0; }
+        .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--primary); }
+        input:checked + .slider:before { transform: translateX(22px); }
+        .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 10px; -ms-overflow-style: none; scrollbar-width: none; }
+        .filter-bar::-webkit-scrollbar { display: none; }
+        .filter-bar .btn { flex-shrink: 0; }
+        .list-item { display: flex; align-items: center; gap: 15px; padding: 15px; background: var(--card-light); border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border-light); cursor: pointer; transition: transform 0.2s; }
+        .list-item:hover { transform: scale(1.02); }
+        .list-item-img { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; }
+        .list-item-content { flex: 1; }
+        .list-item-content h3 { margin: 0 0 5px 0; color: var(--text-light); }
+        .list-item-content p { margin: 0; color: var(--text-muted-light); font-size: 0.9rem; }
+        .profile-header { display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; }
+        .profile-avatar { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px; border: 4px solid var(--primary); cursor: pointer; }
+        .profile-tabs { display: flex; justify-content: center; margin-bottom: 20px; gap: 10px; overflow-x: auto; padding-bottom: 10px; }
+        .achievement-badge { display: flex; flex-direction: column; align-items: center; text-align: center; width: 80px; }
+        .achievement-badge i { font-size: 2rem; color: var(--primary); opacity: 0.5; }
+        .achievement-badge.earned i { opacity: 1; }
+        .achievement-badge span { font-size: 0.7rem; margin-top: 5px; }
+        .comment-section { margin-top: 20px; border-top: 1px solid var(--border-light); padding-top: 15px; }
+        .comment { margin-bottom: 10px; padding: 10px; background: var(--background-light); border-radius: 10px; }
+        .comment-user { font-weight: 600; margin-bottom: 5px; }
+        .progress-bar { width: 100%; background-color: var(--border-light); border-radius: 10px; overflow: hidden; height: 10px; }
+        .progress-bar-inner { height: 100%; background-color: var(--success); border-radius: 10px; transition: width 0.5s ease; }
+        .leaderboard-item { display: flex; align-items: center; margin-bottom: 15px; padding: 10px; border-radius: 8px; }
+        .leaderboard-item.rank-1 { background-color: #ffd70040; } .leaderboard-item.rank-2 { background-color: #c0c0c040; } .leaderboard-item.rank-3 { background-color: #cd7f3240; }
+        .leaderboard-rank { font-weight: 700; font-size: 1.2rem; width: 40px; }
+        .leaderboard-name { font-weight: 500; }
+        .leaderboard-rating { margin-left: auto; font-weight: 600; color: var(--primary); }
+        .formula-image { max-width: 100%; border: 1px solid var(--border-light); border-radius: 8px; margin: 10px 0; display: block; }
+        .auth-container { padding: 20px; text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%; }
+        .toast-container { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 2000; }
+        .toast { padding: 12px 20px; background-color: var(--secondary); color: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.2); animation: slideDown 0.5s, fadeOut 0.5s 2.5s; }
+        @keyframes slideDown { from { top: -50px; opacity: 0; } to { top: 20px; opacity: 1; }}
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; }}
+        .match-card-reason { font-size: 0.8rem; color: var(--info); font-weight: 600; margin-top: 8px; }
+        .time-slot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+        .wizard-steps { display: flex; justify-content: space-around; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border-light); }
+        .wizard-step { display: flex; flex-direction: column; align-items: center; color: var(--text-muted-light); }
+        .wizard-step.active { color: var(--primary); font-weight: 600; }
+        .wizard-step-circle { width: 30px; height: 30px; border-radius: 50%; background-color: var(--border-light); color: var(--text-muted-light); display: flex; align-items: center; justify-content: center; margin-bottom: 5px; }
+        .wizard-step.active .wizard-step-circle { background-color: var(--primary); color: white; }
+        .upcoming-section { display: flex; gap: 15px; overflow-x: auto; margin-bottom: 20px; background-color: #FC990540; padding: 15px; border-radius: 16px; }
+        .upcoming-item { min-width: 150px; padding: 10px; background: var(--card-light); color: var(--text-light); border-radius: 12px; box-shadow: var(--shadow); transition: transform 0.2s; }
+        .upcoming-item:hover { transform: scale(1.05); }
+        .upcoming-item h4 { margin: 0 0 5px; font-size: 1.1rem; color: var(--primary); }
+        .upcoming-item p { margin: 3px 0; font-size: 0.9rem; }
+        .post-card { margin-bottom: 15px; padding: 15px; border: 1px solid var(--border-light); border-radius: 12px; }
+        .post-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .post-avatar { width: 30px; height: 30px; border-radius: 50%; }
+        .post-time { color: var(--text-muted-light); font-size: 0.8rem; }
+        .post-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
+        .review-form { margin-top: 20px; }
+        .rating-select { display: flex; gap: 5px; margin-bottom: 10px; }
+        .rating-star { cursor: pointer; font-size: 1.5rem; color: #ccc; }
+        .rating-star.selected { color: var(--warning); }
+        .calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; margin-bottom: 20px; }
+        .calendar-day { padding: 10px; text-align: center; border: 1px solid var(--border-light); border-radius: 5px; cursor: pointer; }
+        .calendar-day.selected { background-color: var(--primary); color: white; }
+        .calendar-day.disabled { color: #ccc; cursor: not-allowed; }
+        .calendar-header { display: grid; grid-template-columns: repeat(7, 1fr); font-weight: bold; margin-bottom: 10px; }
+        .time-chart { display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 10px; }
+        .time-slot { padding: 10px; text-align: center; border: 1px solid var(--border-light); border-radius: 5px; cursor: pointer; }
+        .time-slot.selected { background-color: var(--primary); color: white; }
+        .time-slot.booked { background-color: var(--danger); color: white; cursor: not-allowed; }
+        .notification-list { list-style: none; padding: 0; }
+        .notification-item { padding: 10px; border-bottom: 1px solid var(--border-light); cursor: pointer; }
+        .notification-item.unread { background-color: var(--background-light); font-weight: bold; }
+        #map { height: 100%; }
+        .weather-card { background: linear-gradient(135deg, #87CEEB, #4682B4); color: white; padding: 15px; border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
+        .weather-icon { font-size: 2rem; margin-right: 10px; }
+        .upcoming-header { font-size: 1.2rem; margin-bottom: 10px; color: var(--text-light); }
+        .upcoming-section::-webkit-scrollbar { height: 8px; }
+        .upcoming-section::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+        .venue-popup { max-width: 300px; background: white; padding: 10px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        .venue-popup img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+        .venue-popup button { width: 100%; padding: 8px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; }
+        .venue-popup p { margin: 5px 0; font-size: 0.9rem; }
+        .venue-popup h3 { margin-bottom: 10px; }
+        .venue-popup .weather-info { font-size: 0.8rem; color: #555; }
+    </style>
+</head>
+<body><div id="root"></div><script type="text/babel">
+
+    const { useState, useEffect, createContext, useContext, useReducer, useRef } = React;
+
+    // --- CONTEXTS & PROVIDERS --- //
+    const ToastContext = createContext();
+    const ThemeContext = createContext();
+    const AppStateContext = createContext();
+    
+    // --- MOCK DATA (Significantly Expanded for Feature Richness) --- //
+    const MOCK_USERS = {
+        'u1': { id: 'u1', name: 'Alex', avatar: 'https://placehold.co/80x80/FC9905/333333?text=A', mmr: 1550, matchesPlayed: 25, isYouth: false, emergencyContact: 'jane@goplay.hk', availability: 'Weekends' }, 
+        'u2': { id: 'u2', name: 'Ben', avatar: 'https://placehold.co/80x80/28a745/ffffff?text=B', mmr: 1980, matchesPlayed: 80, isYouth: false, emergencyContact: null, availability: 'Evenings' },
+        'u3': { id: 'u3', name: 'Charlie', avatar: 'https://placehold.co/80x80/dc3545/ffffff?text=C', mmr: 1020, matchesPlayed: 3, isYouth: true, emergencyContact: 'father@email.com', availability: 'Anytime' }, 
+        'u4': { id: 'u4', name: 'Diana', avatar: 'https://placehold.co/80x80/007bff/ffffff?text=D', mmr: 1480, matchesPlayed: 15, isYouth: true, emergencyContact: 'mother@email.com', availability: 'Weekends' },
+        'u5': { id: 'u5', name: 'Eva', avatar: 'https://placehold.co/80x80/ffc107/333333?text=E', mmr: 1700, matchesPlayed: 40, isYouth: false, emergencyContact: 'spouse@email.com', availability: 'Mornings' },
+        'u6': { id: 'u6', name: 'Frank', avatar: 'https://placehold.co/80x80/17a2b8/ffffff?text=F', mmr: 1200, matchesPlayed: 10, isYouth: true, emergencyContact: 'parent@email.com', availability: 'Afternoons' },
+    };
+    const ALL_ACHIEVEMENTS = {
+        'match10': { id: 'match10', icon: 'fa-medal', title: '10 Matches', description: 'Played in 10 matches.' }, 
+        'tennisWin': { id: 'tennisWin', icon: 'fa-trophy', title: 'First Tennis Win', description: 'Won your first tennis match.' },
+        'communityHelper': { id: 'communityHelper', icon: 'fa-hands-helping', title: 'Community Helper', description: 'Received thanks for helping in the community.' }, 
+        'explorer': { id: 'explorer', icon: 'fa-map-signs', title: 'Explorer', description: 'Tried 3 different sports.' },
+        'streak5': { id: 'streak5', icon: 'fa-fire', title: '5-Day Streak', description: 'Maintained a 5-day activity streak.' },
+        'leagueChamp': { id: 'leagueChamp', icon: 'fa-crown', title: 'League Champion', description: 'Won a youth league tournament.' },
+    };
+    
+    const INITIAL_APP_DATA = {
+        users: MOCK_USERS,
+        currentUser: { id: 'u1', name: 'Alex', email: 'alex@goplay.hk', profilePic: MOCK_USERS['u1'].avatar, friends: ['u2', 'u4'], achievements: ['match10'], preferences: { favoriteSports: ['Basketball', 'Tennis'], notifications: { matchInvites: true, bookingReminders: true, communityUpdates: false, llmTrainingOptOut: false }, playRadius: 10 }, stats: { winRate: '60%', preferredTime: 'Evenings' }, activityStreak: 3, lastCheckIn: null, triedSports: ['Tennis', 'Basketball'], lastLeagueMatchDate: new Date('2025-10-10') },
+        bookings: [ { id: 'b1', type: 'upcoming', venueId: 'v1', sport: 'Tennis', date: '2025-10-25', time: '18:00', court: '5' }, { id: 'b2', type: 'past', venueId: 'v2', sport: 'Basketball', date: '2025-09-15', time: '20:00', court: 'A' }, { id: 'b3', type: 'upcoming', venueId: 'v5', sport: 'Swimming', date: '2025-10-30', time: '07:00', court: 'Pool 1' } ],
+        matches: [ 
+            { id: 'm1', creatorId: 'u2', sport: 'Basketball', venueId: 'v2', date: '2025-10-26', time: '19:00', skill: 'Intermediate', participants: ['u2'], totalSlots: 10, cost: 0, status: 'upcoming', isLeague: false, result: null, comments: [], isPrivate: false }, 
+            { id: 'm2', creatorId: 'u3', sport: 'Tennis', venueId: 'v1', date: '2025-10-27', time: '10:00', skill: 'Beginner', participants: ['u3'], totalSlots: 4, cost: 70, status: 'upcoming', isLeague: true, result: null, comments: [{userId: 'u4', text: 'Excited!', time: '2h ago'}], isPrivate: false }, 
+            { id: 'm3', creatorId: 'u4', sport: 'Football', venueId: 'v3', date: '2025-10-28', time: '20:00', skill: 'All Levels', participants: ['u2', 'u3', 'u4'], totalSlots: 11, cost: 250, status: 'upcoming', isLeague: false, result: null, comments: [], isPrivate: true },
+            { id: 'm4', creatorId: 'u1', sport: 'Tennis', venueId: 'v1', date: '2025-10-15', time: '14:00', skill: 'Intermediate', participants: ['u1', 'u4'], totalSlots: 2, cost: 70, status: 'completed', isLeague: false, result: {winner: 'u1', score: '6-4, 6-3'}, comments: [], isPrivate: false },
+            { id: 'm5', creatorId: 'u5', sport: 'Swimming', venueId: 'v5', date: '2025-11-01', time: '08:00', skill: 'Advanced', participants: ['u5'], totalSlots: 8, cost: 19, status: 'upcoming', isLeague: false, result: null, comments: [], isPrivate: false },
+            { id: 'm6', creatorId: 'u6', sport: 'Badminton', venueId: 'v6', date: '2025-11-02', time: '15:00', skill: 'Beginner', participants: ['u6', 'u3'], totalSlots: 4, cost: 50, status: 'upcoming', isLeague: true, result: null, comments: [], isPrivate: false },
+            { id: 'm7', creatorId: 'u1', sport: 'Squash', venueId: 'v7', date: '2025-11-03', time: '16:00', skill: 'Intermediate', participants: ['u1'], totalSlots: 2, cost: 60, status: 'upcoming', isLeague: false, result: null, comments: [], isPrivate: false },
+            { id: 'm8', creatorId: 'u2', sport: 'Basketball', venueId: 'v8', date: '2025-11-04', time: '18:00', skill: 'Advanced', participants: ['u2'], totalSlots: 10, cost: 0, status: 'upcoming', isLeague: false, result: null, comments: [], isPrivate: false },
+            { id: 'm9', creatorId: 'u3', sport: 'Athletics', venueId: 'v9', date: '2025-11-05', time: '09:00', skill: 'Beginner', participants: ['u3'], totalSlots: 20, cost: 20, status: 'upcoming', isLeague: true, result: null, comments: [], isPrivate: false },
+        ],
+        venues: [ 
+            { id: 'v1', name: 'Victoria Park', sport: 'Tennis', location: 'Causeway Bay', rating: 4.5, price: 70, img: 'https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2024/10/08/04a0110f-3f08-4481-97e2-9f23c3c58220_c59b5e28.jpg', facilities: ['Lockers', 'Showers', 'Vending Machine'], reviews: [{userId: 'u2', rating: 5, text: 'Great courts!'}], checkInCode: 'VP123', timeSlots: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'], lat: 22.2819, lng: 114.1889, description: 'Iconic public park with 13 tennis courts, located in the heart of Causeway Bay. Managed by LCSD.', district: 'Wan Chai' }, 
+            { id: 'v2', name: 'Southorn Playground', sport: 'Basketball', location: 'Wan Chai', rating: 4.2, price: 0, img: 'https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2024/07/30/6838292b-da2e-418d-93bd-b88faf3d2359_1126e908.jpg', facilities: ['Water Fountain', 'Benches'], reviews: [{userId: 'u1', rating: 4, text: 'Good for pick-up games.'}], checkInCode: 'SH456', timeSlots: ['18:00', '19:00', '20:00', '21:00'], lat: 22.2765, lng: 114.1615, description: 'Urban playground famous for street basketball, open 24/7.', district: 'Wan Chai' }, 
+            { id: 'v3', name: 'Fa Hui Park', sport: 'Football', location: 'Mong Kok', rating: 4.0, price: 250, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Fa_Hui_Park_Basketball_Court_2012.jpg/1200px-Fa_Hui_Park_Basketball_Court_2012.jpg', facilities: ['Changing Rooms', 'Toilets', 'Floodlights'], reviews: [], checkInCode: 'FH789', timeSlots: ['19:00', '20:00', '21:00'], lat: 22.3225, lng: 114.1705, description: 'Public park with football pitches, popular in Kowloon.', district: 'Yau Tsim Mong' },
+            { id: 'v4', name: 'BounceLimit', sport: 'Trampoline', location: 'Kowloon Bay', rating: 4.8, price: 150, img: 'https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=2273132290272064957', facilities: ['Private Facility', 'Cafe', 'Party Rooms'], reviews: [{userId: 'u5', rating: 5, text: 'Fun for all ages!'}], checkInCode: 'BL555', timeSlots: ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.3123, lng: 114.2134, description: 'Indoor trampoline park with various activities.', district: 'Kwun Tong' },
+            { id: 'v5', name: 'Kowloon Park Swimming Pool', sport: 'Swimming', location: 'Tsim Sha Tsui', rating: 4.6, price: 19, img: 'https://upload.wikimedia.org/wikipedia/commons/5/58/Kowloon_Park_Swimming_Pool_Overview_201404.jpg', facilities: ['Pools', 'Changing Rooms', 'Sauna'], reviews: [], checkInCode: 'KP999', timeSlots: ['07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00'], lat: 22.3007, lng: 114.1713, description: 'Large public swimming complex with indoor and outdoor pools, managed by LCSD.', district: 'Yau Tsim Mong' },
+            { id: 'v6', name: 'Tsing Yi Sports Centre', sport: 'Badminton', location: 'Tsing Yi', rating: 4.3, price: 50, img: 'https://fpf.ccidahk.gov.hk/common/images/location/00374/00374f.jpg', facilities: ['Courts', 'Showers', 'Lockers'], reviews: [{userId: 'u6', rating: 4, text: 'Well-maintained.'}], checkInCode: 'TY222', timeSlots: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.3556, lng: 114.1042, description: 'Multi-purpose sports centre with badminton halls.', district: 'Kwai Tsing' },
+            { id: 'v7', name: 'Hong Kong Park Sports Centre', sport: 'Squash', location: 'Central', rating: 4.4, price: 60, img: 'https://www.lcsd.gov.hk/en/parks/hkp/common/graphics/view/i_squash_centre2.jpg', facilities: ['Squash Courts', 'Fitness Room'], reviews: [], checkInCode: 'HP333', timeSlots: ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.2775, lng: 114.1618, description: 'Indoor sports centre specializing in squash and fitness.', district: 'Central and Western' },
+            { id: 'v8', name: 'Tai Kok Tsui Sports Centre', sport: 'Basketball', location: 'Mong Kok', rating: 4.1, price: 0, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Arena_of_Tai_Kok_Tsui_Sports_Centre.JPG/1200px-Arena_of_Tai_Kok_Tsui_Sports_Centre.JPG', facilities: ['Indoor Courts', 'Fitness Room'], reviews: [], checkInCode: 'TK333', timeSlots: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.3215, lng: 114.1635, description: 'Modern sports centre with basketball facilities.', district: 'Yau Tsim Mong' },
+            { id: 'v9', name: 'Sham Shui Po Sports Ground', sport: 'Athletics', location: 'Sham Shui Po', rating: 4.5, price: 20, img: 'https://www.lcsd.gov.hk/file_upload_clpss/leisure_facilities/en/common/images/photo/facilities/SSP/683_04.jpg', facilities: ['Track', 'Field', 'Stands'], reviews: [], checkInCode: 'SP444', timeSlots: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'], lat: 22.3312, lng: 114.1578, description: 'Athletics ground with running track.', district: 'Sham Shui Po' },
+            { id: 'v10', name: 'Aberdeen Sports Centre', sport: 'Tennis', location: 'Aberdeen', rating: 4.2, price: 70, img: 'https://www.sportaberdeen.co.uk/wp-content/uploads/2020/06/tennis-banner-background-2000-915.jpg', facilities: ['Tennis Courts', 'Squash Courts'], reviews: [], checkInCode: 'AB555', timeSlots: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.2489, lng: 114.1522, description: 'Sports centre with tennis and squash facilities.', district: 'Southern' },
+            { id: 'v11', name: 'Kwai Tsing Swimming Pool', sport: 'Swimming', location: 'Kwai Chung', rating: 4.3, price: 19, img: 'https://c8.alamy.com/comp/2D9YAAN/kwai-shing-swimming-pool-a-public-swimming-complex-in-kwai-chung-new-territories-hong-kong-2D9YAAN.jpg', facilities: ['Pools', 'Water Slides'], reviews: [], checkInCode: 'KT666', timeSlots: ['07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'], lat: 22.3575, lng: 114.1275, description: 'Public swimming pool with recreational facilities.', district: 'Kwai Tsing' },
+            { id: 'v12', name: 'Yuen Long Stadium', sport: 'Football', location: 'Yuen Long', rating: 4.4, price: 250, img: 'https://footballgroundmap.s3.eu-west-1.amazonaws.com/photos/yuen-long-stadium29884l.jpg', facilities: ['Pitch', 'Running Track'], reviews: [], checkInCode: 'YL777', timeSlots: ['18:00', '19:00', '20:00', '21:00'], lat: 22.4417, lng: 114.0222, description: 'Stadium for football and athletics.', district: 'Yuen Long' },
+            { id: 'v13', name: 'Tai Po Sports Centre', sport: 'Badminton', location: 'Tai Po', rating: 4.5, price: 50, img: 'https://www.lcsd.gov.hk/file_upload_clpss/leisure_facilities/en/common/images/photo/facilities/TP/TPHSC_Arena.jpg', facilities: ['Courts', 'Fitness Room'], reviews: [], checkInCode: 'TP888', timeSlots: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.4501, lng: 114.1689, description: 'Sports centre with badminton and other facilities.', district: 'Tai Po' },
+            { id: 'v14', name: 'Tsuen Wan Sports Centre', sport: 'Squash', location: 'Tsuen Wan', rating: 4.2, price: 60, img: 'https://www.lcsd.gov.hk/file_upload_clpss/leisure_facilities/en/common/images/photo/facilities/TW/TKCSC_squash%20court.jpg', facilities: ['Squash Courts', 'Table Tennis'], reviews: [], checkInCode: 'TW999', timeSlots: ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.3683, lng: 114.1133, description: 'Multi-purpose sports centre.', district: 'Tsuen Wan' },
+            { id: 'v15', name: 'Sha Tin Sports Ground', sport: 'Athletics', location: 'Sha Tin', rating: 4.6, price: 20, img: 'https://www.lcsd.gov.hk/file_upload_clpss/leisure_facilities/en/common/images/photo/facilities/ST/428_photo01.jpg', facilities: ['Track', 'Field'], reviews: [], checkInCode: 'ST111', timeSlots: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'], lat: 22.3875, lng: 114.1950, description: 'Large athletics ground.', district: 'Sha Tin' },
+            { id: 'v16', name: 'North District Sports Ground', sport: 'Football', location: 'Sheung Shui', rating: 4.3, price: 250, img: 'https://upload.wikimedia.org/wikipedia/commons/2/23/North_District_Sports_Ground.jpg', facilities: ['Pitch', 'Stands'], reviews: [], checkInCode: 'ND222', timeSlots: ['18:00', '19:00', '20:00', '21:00'], lat: 22.5025, lng: 114.1275, description: 'Football stadium in North District.', district: 'North' },
+            { id: 'v17', name: 'Fanling Swimming Pool', sport: 'Swimming', location: 'Fanling', rating: 4.4, price: 19, img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Fanling_Swimming_Pool_2017.jpg/1200px-Fanling_Swimming_Pool_2017.jpg', facilities: ['Pools', 'Changing Rooms'], reviews: [], checkInCode: 'FL333', timeSlots: ['07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'], lat: 22.4925, lng: 114.1394, description: 'Public swimming pool.', district: 'North' },
+            { id: 'v18', name: 'Tuen Mun Sports Centre', sport: 'Basketball', location: 'Tuen Mun', rating: 4.1, price: 0, img: 'https://media.timeout.com/images/105707139/image.jpg', facilities: ['Indoor Courts'], reviews: [], checkInCode: 'TM444', timeSlots: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.3908, lng: 113.9661, description: 'Sports centre with basketball.', district: 'Tuen Mun' },
+            { id: 'v19', name: 'Sai Kung Sports Centre', sport: 'Tennis', location: 'Sai Kung', rating: 4.5, price: 70, img: 'https://fpf.ccidahk.gov.hk/common/images/location/00151/00151d.jpg', facilities: ['Tennis Courts'], reviews: [], checkInCode: 'SK555', timeSlots: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.3175, lng: 114.2636, description: 'Sports centre in Sai Kung.', district: 'Sai Kung' },
+            { id: 'v20', name: 'Islands District Sports Centre', sport: 'Badminton', location: 'Tung Chung', rating: 4.2, price: 50, img: 'https://www.lcsd.gov.hk/file_upload_clpss/leisure_facilities/en/common/images/photo/facilities/ED/469_01.jpg', facilities: ['Courts'], reviews: [], checkInCode: 'ID666', timeSlots: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.2889, lng: 113.9425, description: 'Sports centre in Islands District.', district: 'Islands' },
+            { id: 'v21', name: 'Wong Tai Sin Sports Centre', sport: 'Table Tennis', location: 'Wong Tai Sin', rating: 4.3, price: 40, img: 'https://img.i-scmp.com/cdn-cgi/image/fit=contain,width=1024,format=auto/sites/default/files/images/methode/2018/12/07/9808789c-f9d4-11e8-93b8-bdc844c69537_1320x770_163008.jpg', facilities: ['Tables', 'Lockers'], reviews: [], checkInCode: 'WT777', timeSlots: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.3419, lng: 114.1950, description: 'Sports centre with table tennis facilities.', district: 'Wong Tai Sin' },
+            { id: 'v22', name: 'Kwun Tong Swimming Pool', sport: 'Swimming', location: 'Kwun Tong', rating: 4.4, price: 19, img: 'https://www.kwuntong.org.hk/tc/images/c5/c5_1b.jpg', facilities: ['Pools', 'Diving Boards'], reviews: [], checkInCode: 'KT888', timeSlots: ['07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'], lat: 22.3167, lng: 114.2250, description: 'Public swimming pool in Kwun Tong.', district: 'Kwun Tong' },
+            { id: 'v23', name: 'Tin Shui Wai Sports Centre', sport: 'Basketball', location: 'Tin Shui Wai', rating: 4.2, price: 0, img: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/HK_TSW_%E5%A4%A9%E6%B0%B4%E5%9C%8D%E9%AB%94%E8%82%B2%E9%A4%A8_Tin_Shui_Wai_Sports_Centre_interior_basketball_court_indoor_Dec_2016_Lnv2_01.jpg', facilities: ['Indoor Courts', 'Gym'], reviews: [], checkInCode: 'TS999', timeSlots: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.4569, lng: 114.0022, description: 'Sports centre in Tin Shui Wai.', district: 'Yuen Long' },
+            { id: 'v24', name: 'Ma On Shan Sports Centre', sport: 'Tennis', location: 'Ma On Shan', rating: 4.5, price: 70, img: 'https://www.freeguider.com/upload/venues/172/big/18cfbef501b8774d0bdd063e74737e8e.jpg', facilities: ['Tennis Courts', 'Fitness Room'], reviews: [], checkInCode: 'MS111', timeSlots: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.4167, lng: 114.2333, description: 'Sports centre in Ma On Shan.', district: 'Sha Tin' },
+            { id: 'v25', name: 'Sheung Wan Sports Centre', sport: 'Badminton', location: 'Sheung Wan', rating: 4.3, price: 50, img: 'https://sarunlee.wordpress.com/wp-content/uploads/2012/04/dsc04133.jpg', facilities: ['Courts', 'Showers'], reviews: [], checkInCode: 'SW222', timeSlots: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'], lat: 22.2864, lng: 114.1500, description: 'Sports centre in Sheung Wan.', district: 'Central and Western' },
+        ],
+        notifications: [ { id: 'n1', read: false, text: 'Your Victoria Park booking is confirmed.', time: '2h ago' }, { id: 'n2', read: false, text: 'Ben accepted your friend request.', time: '4h ago' }, { id: 'n3', read: true, text: 'You have a new match invite for Basketball.', time: '1d ago' }, { id: 'n4', read: false, text: 'SAFETY ALERT: You missed your checkout at Southorn. A message has been sent to jane@goplay.hk.', time: '15m ago', type: 'safety'}, { id: 'n5', read: false, text: 'Eva commented on your post.', time: '30m ago' }, { id: 'n6', read: false, text: 'New event in your area: Squash Workshop.', time: '1h ago' } ],
+    };
+
+    // --- APP STATE MANAGEMENT (useReducer) --- //
+    const appReducer = (state, action) => {
+        switch (action.type) {
+            case 'CREATE_MATCH': return { ...state, matches: [action.payload.newMatch, ...state.matches] };
+            case 'JOIN_MATCH': {
+                const newState = { ...state, matches: state.matches.map(m => m.id === action.payload.matchId ? { ...m, participants: [...m.participants, state.currentUser.id] } : m) };
+                if(action.payload.isLeague) { newState.currentUser.lastLeagueMatchDate = new Date(); }
+                return newState;
+            }
+            case 'LEAVE_MATCH': return { ...state, matches: state.matches.map(m => m.id === action.payload.matchId ? { ...m, participants: m.participants.filter(pId => pId !== state.currentUser.id) } : m) };
+            case 'ADD_BOOKING': return { ...state, bookings: [{...action.payload, id: `b${Date.now()}`, type: 'upcoming'}, ...state.bookings]};
+            case 'CANCEL_BOOKING': return { ...state, bookings: state.bookings.filter(b => b.id !== action.payload.bookingId) };
+            case 'ADD_VENUE_REVIEW': {
+                const {venueId, rating, text} = action.payload;
+                const venue = state.venues.find(v => v.id === venueId);
+                const newReviews = [...venue.reviews, {userId: state.currentUser.id, rating, text}];
+                const newRating = newReviews.reduce((sum, r) => sum + r.rating, 0) / newReviews.length;
+                return { ...state, venues: state.venues.map(v => v.id === venueId ? {...v, reviews: newReviews, rating: newRating.toFixed(1)} : v)};
+            }
+            case 'ADD_FRIEND': return {...state, currentUser: {...state.currentUser, friends: [...state.currentUser.friends, action.payload.friendId]}};
+            case 'UPDATE_USER_PREFERENCES': return { ...state, currentUser: {...state.currentUser, preferences: action.payload} };
+            case 'UPDATE_EMERGENCY_CONTACT': return {...state, currentUser: {...state.currentUser, emergencyContact: action.payload.contact}};
+            case 'MARK_NOTIFICATIONS_READ': return { ...state, notifications: state.notifications.map(n => ({...n, read: true})) };
+            case 'MARK_NOTIFICATION_READ': return { ...state, notifications: state.notifications.map(n => n.id === action.payload.id ? {...n, read: true} : n) };
+            case 'CHECK_IN': return { ...state, currentUser: {...state.currentUser, lastCheckIn: action.payload }};
+            case 'CHECK_OUT': return { ...state, currentUser: {...state.currentUser, lastCheckIn: null }};
+            case 'ADD_SAFETY_ALERT': return { ...state, notifications: [action.payload.notification, ...state.notifications] };
+            case 'REPORT_RESULT': {
+                const { matchId, result } = action.payload;
+                const match = state.matches.find(m => m.id === matchId);
+                const [player1Id, player2Id] = match.participants;
+                const player1 = state.users[player1Id];
+                const player2 = state.users[player2Id];
+                if (!player1 || !player2) return state; // Safety check
+                const winResult = result.winner === player1Id ? 1 : 0;
+                const { newRatingA, newRatingB } = RatingService.updateRatings(player1, player2, winResult);
+                return { ...state, 
+                    matches: state.matches.map(m => m.id === matchId ? {...m, result, status: 'completed'} : m),
+                    users: { ...state.users, 
+                        [player1Id]: {...player1, mmr: newRatingA, matchesPlayed: player1.matchesPlayed + 1},
+                        [player2Id]: {...player2, mmr: newRatingB, matchesPlayed: player2.matchesPlayed + 1}
+                    }
+                };
+            }
+            case 'CLAIM_REWARD': return { ...state, currentUser: {...state.currentUser, activityStreak: 0}};
+            case 'TRY_SPORT': return { ...state, currentUser: {...state.currentUser, triedSports: [...state.currentUser.triedSports, action.payload.sport]}};
+            case 'UPDATE_PROFILE': return { ...state, currentUser: {...state.currentUser, ...action.payload} };
+            default: return state;
+        }
+    };
+
+    // --- SERVICES & LOGIC (Simulated Backend) --- //
+    const RatingService = {
+        calculateExpected: (playerRating, opponentRating) => 1 / (1 + Math.pow(10, (opponentRating - playerRating) / 400)),
+        getKFactor: (matchesPlayed) => { if (matchesPlayed < 5) return 32; if (matchesPlayed < 20) return 16; return 8; },
+        updateRatings: (playerA, playerB, result) => { /* result: 1 for A win, 0 for B win */
+            const kA = RatingService.getKFactor(playerA.matchesPlayed);
+            const kB = RatingService.getKFactor(playerB.matchesPlayed);
+            const expectedA = RatingService.calculateExpected(playerA.mmr, playerB.mmr);
+            const newRatingA = playerA.mmr + kA * (result - expectedA);
+            const newRatingB = playerB.mmr + kB * ((1 - result) - (1 - expectedA));
+            return { newRatingA: Math.round(newRatingA), newRatingB: Math.round(newRatingB) };
+        }
+    };
+    const MatchmakingService = { 
+        getSmartMatches: (currentUser, allMatches, allUsers) => {
+            const isRLConverged = allUsers[currentUser.id].matchesPlayed > 10; 
+            const availableMatches = allMatches.filter(m => m.status === 'upcoming' && !m.participants.includes(currentUser.id) && m.participants.length < m.totalSlots);
+            
+            if (isRLConverged) { // PPO (Simulated)
+                return availableMatches.sort((a, b) => {
+                    const aIsPref = currentUser.preferences.favoriteSports.includes(a.sport);
+                    const bIsPref = currentUser.preferences.favoriteSports.includes(b.sport);
+                    if (aIsPref && !bIsPref) return -1; if (!aIsPref && bIsPref) return 1;
+                    const avgMmrA = a.participants.reduce((sum, pId) => sum + allUsers[pId].mmr, 0) / a.participants.length;
+                    const avgMmrB = b.participants.reduce((sum, pId) => sum + allUsers[pId].mmr, 0) / b.participants.length;
+                    return Math.abs(avgMmrA - allUsers[currentUser.id].mmr) - Math.abs(avgMmrB - allUsers[currentUser.id].mmr);
+                }).map(match => ({...match, reason: `PPO: Good MMR balance & aligns with your preferences.`}));
+            } else { // Greedy MMR
+                return availableMatches.sort((a, b) => {
+                    const avgMmrA = a.participants.reduce((sum, pId) => sum + allUsers[pId].mmr, 0) / a.participants.length;
+                    const avgMmrB = b.participants.reduce((sum, pId) => sum + allUsers[pId].mmr, 0) / b.participants.length;
+                    return Math.abs(avgMmrA - allUsers[currentUser.id].mmr) - Math.abs(avgMmrB - allUsers[currentUser.id].mmr);
+                }).map(match => ({...match, reason: `Greedy MMR: This is the closest match to your current skill level.`}));
+            }
+        }
+    };
+    const StripeService = { // Simulates Stripe Connect fee splitting
+        calculateSplit: (cost, numParticipants) => { if (!numParticipants || numParticipants === 0) return cost; return (cost / numParticipants).toFixed(2); }
+    };
+
+    // --- PROVIDERS & REUSABLE COMPONENTS --- //
+    const ToastProvider = ({ children }) => { const [t, setT] = useState(null); const showT = (m) => { setT(m); setTimeout(() => setT(null), 3000); }; return <ToastContext.Provider value={showT}>{children}{t && <div className="toast-container"><div className="toast">{t}</div></div>}</ToastContext.Provider>; };
+    const ThemeProvider = ({ children }) => { const [th, setTh] = useState(() => localStorage.getItem('theme') || 'light'); useEffect(() => { document.body.className = th; localStorage.setItem('theme', th); }, [th]); const toggleTh = () => setTh(p => (p === 'light' ? 'dark' : 'light')); return <ThemeContext.Provider value={{ theme: th, toggleTheme: toggleTh }}>{children}</ThemeContext.Provider>; };
+    const AppStateProvider = ({ children }) => { const [state, dispatch] = useReducer(appReducer, INITIAL_APP_DATA); return <AppStateContext.Provider value={{ state, dispatch }}>{children}</AppStateContext.Provider>; };
+    const Modal = ({ isOpen, close, title, children }) => !isOpen ? null : <div className="modal-overlay" onClick={close}><div className="modal-content" onClick={e => e.stopPropagation()}><div className="modal-header"><h2>{title}</h2><div className="header-action" onClick={close}><i className="fas fa-times"></i></div></div>{children}</div></div>;
+    const SplashScreen = ({ onFinish }) => { useEffect(() => { const t = setTimeout(onFinish, 1500); return () => clearTimeout(t); }, []); return <div className="splash-screen"><div className="splash-logo-container"><div className="splash-logo-shape"></div><div className="splash-logo-text">Go<br/>Play</div></div></div>; };
+    const Header = ({ title, onBack, children }) => <header className="app-header">{onBack ? <div className="header-action" onClick={onBack}><i className="fas fa-arrow-left fa-lg"></i></div> : <div className="header-action"></div>}<h1>{title}</h1><div className="header-action">{children}</div></header>;
+    const LoadingSkeleton = () => <div className="card"><div className="skeleton" style={{height: '150px', marginBottom: '20px'}}></div><div className="skeleton" style={{height: '20px', width: '80%', marginBottom: '10px'}}></div><div className="skeleton" style={{height: '20px', width: '60%'}}></div></div>;
+    
+    // --- AUTH & ONBOARDING --- //
+    const AuthPage = ({ onLogin, setView }) => { const showToast = useContext(ToastContext); const hL = (e) => { e.preventDefault(); showToast("Login successful!"); onLogin(); }; return <div className="auth-container fade-in"><h1>Welcome Back!</h1><p>Sign in to find your next game.</p><form onSubmit={hL}><div className="input-group"><input type="email" placeholder="Email" defaultValue="alex@goplay.hk" /></div><div className="input-group"><input type="password" placeholder="Password" defaultValue="password" /></div><button type="submit" className="btn btn-primary btn-full">Login</button></form><p style={{ marginTop: '20px' }}>Don't have an account? <a href="#" onClick={(e) => { e.preventDefault(); setView('register'); }}>Sign up</a></p><p><a href="#" onClick={(e) => { e.preventDefault(); showToast('Password reset email sent!'); }}>Forgot password?</a></p></div>; };
+    const RegisterPage = ({ onRegister, setView }) => { const showToast = useContext(ToastContext); const hR = (e) => { e.preventDefault(); showToast("Registration successful!"); onRegister(); }; return <div className="auth-container fade-in"><h1>Create Account</h1><p>Join the GoPlay community today!</p><form onSubmit={hR}><div className="input-group"><input type="text" placeholder="Name" /></div><div className="input-group"><input type="email" placeholder="Email" /></div><div className="input-group"><input type="password" placeholder="Password" /></div><button type="submit" className="btn btn-primary btn-full">Register</button></form><p style={{ marginTop: '20px' }}>Already have an account? <a href="#" onClick={(e) => { e.preventDefault(); setView('login'); }}>Sign in</a></p></div>; };
+    
+    // --- HOME PAGE --- //
+    const HomePage = ({ onNavigate }) => {
+        const { state } = useContext(AppStateContext);
+        const showToast = useContext(ToastContext);
+        const upcomingItems = [...state.bookings.filter(b => b.type === 'upcoming'), ...state.matches.filter(m => m.status === 'upcoming' && m.participants.includes(state.currentUser.id))];
+        const [weather, setWeather] = useState({});
+
+        useEffect(() => {
+            const fetchWeather = async (lat, lng, id) => {
+                const apiKey = '37ff70b0145421b1aa91710a6822f4db';
+                const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`);
+                const data = await res.json();
+                setWeather(prev => ({...prev, [id]: data}));
+            };
+            state.venues.forEach(v => fetchWeather(v.lat, v.lng, v.id));
+        }, []);
+
+        const handleCheckOut = (item) => {
+            if (state.currentUser.lastCheckIn) {
+                const timeSinceCheckIn = Date.now() - state.currentUser.lastCheckIn.time;
+                if (timeSinceCheckIn > 2 * 60 * 60 * 1000) { // 2 hours
+                    dispatch({ type: 'ADD_SAFETY_ALERT', payload: { notification: { id: `n${Date.now()}`, read: false, text: 'Safety Alert: Missed checkout. Notified emergency contact.', time: 'Now', type: 'safety' } } });
+                    showToast('Safety alert sent to emergency contact.');
+                }
+            } else {
+                showToast('No active check-in.');
+            }
+            dispatch({ type: 'CHECK_OUT' });
+        };
+
+        return (
+            <>
+                <Header title="GoPlayHK" />
+                <div className="fade-in">
+                    <div className="search-bar"><input type="text" placeholder="Search venues or sports..." onFocus={() => onNavigate({ page: 'explore' })} /><i className="fas fa-search"></i></div>
+                    <h3 className="upcoming-header">Upcoming Activities</h3>
+                    <div className="upcoming-section">
+                        {upcomingItems.length > 0 ? upcomingItems.map(item => {
+                            const venue = state.venues.find(v => v.id === item.venueId);
+                            const wd = weather[item.venueId] || {};
+                            return (
+                                <div key={item.id} className="upcoming-item" onClick={() => onNavigate(item.type ? { page: 'venueDetail', params: { venueId: item.venueId } } : { page: 'matchDetail', params: { matchId: item.id } })}>
+                                    <h4>{item.sport}</h4>
+                                    <p><i className="fas fa-map-marker-alt"></i> {venue.name}</p>
+                                    <p><i className="fas fa-calendar-alt"></i> {item.date} @ {item.time}</p>
+                                    <p><i className="fas fa-cloud-sun"></i> {wd.weather ? wd.weather[0].description : 'Loading...'}</p>
+                                </div>
+                            );
+                        }) : <p>No upcoming activities.</p>}
+                    </div>
+                    <div className="card"><h3>Smart Matches for You</h3>{MatchmakingService.getSmartMatches(state.currentUser, state.matches, state.users).slice(0, 3).map(match => <div key={match.id} className="list-item" onClick={() => onNavigate({ page: 'matchDetail', params: { matchId: match.id } })}><img src={state.venues.find(v => v.id === match.venueId).img} className="list-item-img" /><div className="list-item-content"><h3>{match.sport} - {match.skill}</h3><p>{match.date} @ {match.time}</p><p className="match-card-reason">{match.reason}</p></div></div>)}</div>
+                    <button className="btn btn-primary btn-full" onClick={() => onNavigate({ page: 'matchmaking' })}>Find More Matches</button>
+                    <button className="btn btn-secondary btn-full" onClick={() => onNavigate({ page: 'booking' })}>Book a Court</button>
+                    <button className="btn btn-secondary btn-full" onClick={() => onNavigate({ page: 'youthLeague' })}>Youth League</button>
+                </div>
+            </>
+        );
+    };
+
+    // --- EXPLORE PAGE (Venues List with Map Toggle) --- //
+    const ExplorePage = ({ onNavigate }) => {
+        const { state } = useContext(AppStateContext);
+        const [searchTerm, setSearchTerm] = useState('');
+        const [filterSport, setFilterSport] = useState('');
+        const [filterDistrict, setFilterDistrict] = useState('');
+        const [viewMode, setViewMode] = useState('list');
+        const mapContainer = useRef();
+        const [weatherData, setWeatherData] = useState({});
+        const filteredVenues = state.venues.filter(v => v.name.toLowerCase().includes(searchTerm.toLowerCase()) && (!filterSport || v.sport === filterSport) && (!filterDistrict || v.district === filterDistrict));
+        const sports = [...new Set(state.venues.map(v => v.sport))];
+        const districts = [...new Set(state.venues.map(v => v.district))];
+
+        useEffect(() => {
+            const fetchWeather = async (lat, lng, id) => {
+                const apiKey = '37ff70b0145421b1aa91710a6822f4db';
+                const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`);
+                const data = await res.json();
+                setWeatherData(prev => ({...prev, [id]: data}));
+            };
+            state.venues.forEach(v => fetchWeather(v.lat, v.lng, v.id));
+        }, [state.venues]);
+
+        useEffect(() => {
+            if (viewMode === 'map') {
+                const map = L.map(mapContainer.current).setView([22.3193, 114.1694], 11);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+                const orangeIcon = new L.Icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
+                filteredVenues.forEach(venue => {
+                    const wd = weatherData[venue.id] || {};
+                    const weatherDesc = wd.weather ? wd.weather[0].description : 'Loading...';
+                    const temp = wd.main ? `${wd.main.temp}°C` : '';
+                    const freeCourts = Math.floor(Math.random() * 5);
+                    L.marker([venue.lat, venue.lng], {icon: orangeIcon}).addTo(map)
+                        .bindPopup(`<div class="venue-popup"><h3>${venue.name}</h3><img src="${venue.img}" alt="${venue.name}"><p>${venue.description}</p><p>Free Courts Today: ${freeCourts}</p><p class="weather-info">Weather: ${weatherDesc} ${temp}</p><button onclick="window.navigateToVenue('${venue.id}')">Book Now</button></div>`);
+                });
+                return () => map.remove();
+            }
+        }, [viewMode, filteredVenues, weatherData]);
+
+        return (
+            <>
+                <Header title="Explore Venues" onBack={() => onNavigate({ page: 'home' })} />
+                <div className="fade-in">
+                    <div className="search-bar"><input type="text" placeholder="Search venues..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} /><i className="fas fa-search"></i></div>
+                    <div className="filter-bar">
+                        <select value={filterSport} onChange={e => setFilterSport(e.target.value)}><option value="">All Sports</option>{sports.map(s => <option key={s} value={s}>{s}</option>)}</select>
+                        <select value={filterDistrict} onChange={e => setFilterDistrict(e.target.value)}><option value="">All Districts</option>{districts.map(d => <option key={d} value={d}>{d}</option>)}</select>
+                    </div>
+                    <button className="btn btn-secondary btn-full" onClick={() => setViewMode(viewMode === 'list' ? 'map' : 'list')}>{viewMode === 'list' ? 'View Map' : 'View List'}</button>
+                    {viewMode === 'list' ? (
+                        filteredVenues.map(venue => (
+                            <div key={venue.id} className="list-item" onClick={() => onNavigate({ page: 'venueDetail', params: { venueId: venue.id } })}>
+                                <img src={venue.img} className="list-item-img" alt={venue.name} />
+                                <div className="list-item-content">
+                                    <h3>{venue.name}</h3>
+                                    <p>{venue.sport} - {venue.location}</p>
+                                    <p><i className="fas fa-star"></i> {venue.rating}</p>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <div ref={mapContainer} style={{height: 'calc(100vh - 200px)'}} />
+                    )}
+                </div>
+            </>
+        );
+    };
+
+    // --- MATCHMAKING PAGE --- //
+    const MatchmakingPage = ({ onNavigate }) => {
+        const { state } = useContext(AppStateContext);
+        const smartMatches = MatchmakingService.getSmartMatches(state.currentUser, state.matches, state.users);
+        return (
+            <>
+                <Header title="Matchmaking" onBack={() => onNavigate({ page: 'home' })} />
+                <div className="fade-in">
+                    <h2>Smart Matches</h2>
+                    {smartMatches.map(match => (
+                        <div key={match.id} className="list-item" onClick={() => onNavigate({ page: 'matchDetail', params: { matchId: match.id } })}>
+                            <img src={state.venues.find(v => v.id === match.venueId).img} className="list-item-img" alt={match.sport} />
+                            <div className="list-item-content">
+                                <h3>{match.sport} - {match.skill}</h3>
+                                <p>{match.date} @ {match.time}</p>
+                                <p className="match-card-reason">{match.reason}</p>
+                            </div>
+                        </div>
+                    ))}
+                    <button className="btn btn-primary btn-full" onClick={() => onNavigate({ page: 'createMatch' })}>Create New Match</button>
+                </div>
+            </>
+        );
+    };
+
+    // --- BOOKING PAGE --- //
+    const BookingPage = ({ onNavigate }) => {
+        const { state } = useContext(AppStateContext);
+        const [filterSport, setFilterSport] = useState('');
+        const sports = [...new Set(state.venues.map(v => v.sport))];
+        const filteredVenues = state.venues.filter(v => !filterSport || v.sport === filterSport);
+
+        return (
+            <>
+                <Header title="Court Booking" onBack={() => onNavigate({ page: 'home' })} />
+                <div className="fade-in">
+                    <h2>Book a Court</h2>
+                    <div className="filter-bar">
+                        <select value={filterSport} onChange={e => setFilterSport(e.target.value)}><option value="">All Sports</option>{sports.map(s => <option key={s} value={s}>{s}</option>)}</select>
+                    </div>
+                    {filteredVenues.map(venue => (
+                        <div key={venue.id} className="list-item" onClick={() => onNavigate({ page: 'bookingProcess', params: { venueId: venue.id } })}>
+                            <img src={venue.img} className="list-item-img" alt={venue.name} />
+                            <div className="list-item-content">
+                                <h3>{venue.name}</h3>
+                                <p>{venue.sport} - {venue.location}</p>
+                                <p>HKD ${venue.price}/hr</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </>
+        );
+    };
+
+    // --- DETAILED BOOKING PROCESS --- //
+    const BookingProcess = ({ venueId, onBack, onNavigate }) => {
+        const { state, dispatch } = useContext(AppStateContext);
+        const showToast = useContext(ToastContext);
+        const venue = state.venues.find(v => v.id === venueId);
+        const [step, setStep] = useState(1);
+        const [bookingDetails, setBookingDetails] = useState({ date: '', time: '', court: '', duration: 1 });
+        const [availableSlots, setAvailableSlots] = useState(venue.timeSlots.map(t => ({ time: t, available: Math.random() > 0.3 }))); // Simulated availability
+        const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+        const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+        const calendarDays = Array.from({ length: firstDay }, (_, i) => ({ day: '', disabled: true })).concat(Array.from({ length: daysInMonth }, (_, i) => ({ day: i + 1, disabled: i + 1 < new Date().getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear() })));
+
+        const updateDetail = (key, value) => setBookingDetails(p => ({...p, [key]: value}));
+
+        const handleConfirmBooking = () => {
+            dispatch({ type: 'ADD_BOOKING', payload: { venueId, sport: venue.sport, ...bookingDetails } });
+            showToast('Booking confirmed!');
+            onNavigate({ page: 'home' });
+        };
+
+        const changeMonth = (delta) => {
+            let newMonth = currentMonth + delta;
+            let newYear = currentYear;
+            if (newMonth < 0) { newMonth = 11; newYear--; }
+            if (newMonth > 11) { newMonth = 0; newYear++; }
+            setCurrentMonth(newMonth);
+            setCurrentYear(newYear);
+        };
+
+        return (
+            <>
+                <Header title="Book Court" onBack={onBack} />
+                <div className="wizard-steps">
+                    <div className={`wizard-step ${step === 1 ? 'active' : ''}`}><div className="wizard-step-circle">1</div>Date</div>
+                    <div className={`wizard-step ${step === 2 ? 'active' : ''}`}><div className="wizard-step-circle">2</div>Time</div>
+                    <div className={`wizard-step ${step === 3 ? 'active' : ''}`}><div className="wizard-step-circle">3</div>Details</div>
+                    <div className={`wizard-step ${step === 4 ? 'active' : ''}`}><div className="wizard-step-circle">4</div>Confirm</div>
+                </div>
+
+                {step === 1 && (
+                    <div className="fade-in">
+                        <h3>Select Date</h3>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                            <button onClick={() => changeMonth(-1)}><i className="fas fa-chevron-left"></i></button>
+                            <h4>{new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long' })} {currentYear}</h4>
+                            <button onClick={() => changeMonth(1)}><i className="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div className="calendar-header">
+                            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => <div key={d}>{d}</div>)}
+                        </div>
+                        <div className="calendar">
+                            {calendarDays.map((d, i) => (
+                                <div key={i} className={`calendar-day ${d.disabled ? 'disabled' : ''} ${bookingDetails.date === `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(d.day).padStart(2, '0')}` ? 'selected' : ''}`} onClick={() => !d.disabled && updateDetail('date', `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(d.day).padStart(2, '0')}`)}>
+                                    {d.day}
+                                </div>
+                            ))}
+                        </div>
+                        <button className="btn btn-primary btn-full" onClick={() => setStep(2)} disabled={!bookingDetails.date}>Next: Select Time</button>
+                    </div>
+                )}
+
+                {step === 2 && (
+                    <div className="fade-in">
+                        <h3>Select Time Slot</h3>
+                        <div className="time-chart">
+                            {availableSlots.map(slot => (
+                                <div key={slot.time} className={`time-slot ${!slot.available ? 'booked' : ''} ${bookingDetails.time === slot.time ? 'selected' : ''}`} onClick={() => slot.available && updateDetail('time', slot.time)}>
+                                    {slot.time} {slot.available ? '' : '(Booked)'}
+                                </div>
+                            ))}
+                        </div>
+                        <button className="btn btn-primary btn-full" onClick={() => setStep(3)} disabled={!bookingDetails.time}>Next: Details</button>
+                        <button className="btn btn-secondary btn-full" onClick={() => setStep(1)}>Back</button>
+                    </div>
+                )}
+
+                {step === 3 && (
+                    <div className="fade-in">
+                        <h3>Booking Details</h3>
+                        <div className="input-group"><label>Court/Field</label><input type="text" value={bookingDetails.court} onChange={e => updateDetail('court', e.target.value)} placeholder="e.g., Court 1" /></div>
+                        <div className="input-group"><label>Duration (hours)</label><select value={bookingDetails.duration} onChange={e => updateDetail('duration', parseInt(e.target.value))}><option>1</option><option>2</option><option>3</option></select></div>
+                        <button className="btn btn-primary btn-full" onClick={() => setStep(4)} disabled={!bookingDetails.court}>Next: Confirm</button>
+                        <button className="btn btn-secondary btn-full" onClick={() => setStep(2)}>Back</button>
+                    </div>
+                )}
+
+                {step === 4 && (
+                    <div className="fade-in">
+                        <h3>Confirm Booking</h3>
+                        <div className="card">
+                            <p><strong>Venue:</strong> {venue.name}</p>
+                            <p><strong>Sport:</strong> {venue.sport}</p>
+                            <p><strong>Date:</strong> {bookingDetails.date}</p>
+                            <p><strong>Time:</strong> {bookingDetails.time}</p>
+                            <p><strong>Court:</strong> {bookingDetails.court}</p>
+                            <p><strong>Duration:</strong> {bookingDetails.duration} hours</p>
+                            <p><strong>Total Cost:</strong> HKD ${venue.price * bookingDetails.duration}</p>
+                        </div>
+                        <button className="btn btn-primary btn-full" onClick={handleConfirmBooking}>Confirm & Pay</button>
+                        <button className="btn btn-secondary btn-full" onClick={() => setStep(3)}>Back</button>
+                    </div>
+                )}
+            </>
+        );
+    };
+
+    // --- YOUTH LEAGUE PAGE --- //
+    const YouthLeaguePage = ({ onNavigate }) => {
+        const { state } = useContext(AppStateContext);
+        const [modal, setModal] = useState(null);
+        const YOUTH_LEADERBOARD = Object.values(state.users).filter(u => u.isYouth).sort((a,b) => b.mmr - a.mmr).slice(0,10);
+        const isEligible = state.users[state.currentUser.id].isYouth;
+        const lastPlayedDate = state.currentUser.lastLeagueMatchDate;
+        const canPlay = !lastPlayedDate || (new Date() - lastPlayedDate) / (1000*60*60*24) >= 7;
+        const leagueMatches = state.matches.filter(m => m.isLeague && m.status === 'upcoming');
+
+        return (<>
+            <Header title="Youth League" onBack={() => onNavigate({ page: 'home' })} />
+            {!isEligible ? <div className="card" style={{backgroundColor: 'var(--danger)', color: 'white'}}><h4>Not Eligible</h4><p>The Youth League is for players under 18.</p></div> : null}
+            <div className="card">
+                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <h3><i className="fas fa-trophy" style={{color: 'var(--primary)'}}></i> Leaderboard</h3>
+                     <i className="fas fa-info-circle info-icon" onClick={() => setModal('leagueInfo')}></i>
+                </div>
+                {YOUTH_LEADERBOARD.map((p, index) => (
+                    <div key={p.id} className={`leaderboard-item rank-${index + 1}`}>
+                        <div className="leaderboard-rank">#{index + 1}</div>
+                        <img 
+                            src={p.avatar} 
+                            style={{ width: '40px', height: '40px', borderRadius: '50%', margin: '0 10px' }} 
+                            alt={`${p.name}'s avatar`} 
+                        />
+                        <div className="leaderboard-name">{p.name}</div>
+                        <div className="leaderboard-rating">{p.mmr} MMR</div>
+                    </div>
+                ))}
+            </div>
+            <h3>Upcoming League Matches</h3>
+            {!canPlay && isEligible && <p style={{color: 'var(--text-muted-light)'}}>You can join another league match in {7 - Math.floor((new Date() - new Date(lastPlayedDate)) / (1000*60*60*24))} days.</p>}
+            {leagueMatches.length > 0 ? leagueMatches.map(item => (<div key={item.id} className="list-item fade-in" onClick={() => canPlay && isEligible ? onNavigate({ page: 'matchDetail', params: { matchId: item.id } }) : null} style={{opacity: canPlay && isEligible ? 1 : 0.5, cursor: canPlay && isEligible ? 'pointer' : 'not-allowed'}}> 
+                <img src={state.venues.find(v=>v.id===item.venueId).img} className="list-item-img" alt={item.sport}/> 
+                <div className="list-item-content">
+                    <h3>{item.sport}</h3>
+                    <p><i className="fas fa-calendar-alt"></i> {item.date} @ {item.time}</p>
+                </div>
+            </div>)) : <p>No upcoming league matches scheduled.</p>}
+            {modal === 'leagueInfo' && <Modal title="Youth Development League" close={() => setModal(null)}>
+                <p>Our Youth League is designed to foster talent and ensure fair, development-appropriate competition using our AI Smart Matchmaking. To promote consistent engagement and prevent burnout, players are restricted to one league match per week.</p>
+                <p>This digital-first approach is highly cost-effective and provides a platform for local sports associations to identify promising young talent within the community.</p>
+             </Modal>}
+        </>);
+    };
+    const ProfilePage = ({ onNavigate, onSignOut, params }) => {
+        const { state, dispatch } = useContext(AppStateContext); const { theme, toggleTheme } = useContext(ThemeContext); const showToast = useContext(ToastContext); const [activeTab, setActiveTab] = useState(params?.tab || 'stats'); 
+        const [modal, setModal] = useState(null); const [isEditOpen, setEditOpen] = useState(false);
+        
+        const saveProfile = (updates) => { dispatch({type: 'UPDATE_PROFILE', payload: updates}); showToast('Profile updated!'); };
+        const StatsTab = () => (<>
+            <div className="card fade-in">
+                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <h3><i className="fas fa-chart-line"></i> My Rating</h3>
+                    <i className="fas fa-info-circle info-icon" onClick={() => setModal('ratingInfo')}></i>
+                </div>
+                <p style={{fontSize: '2rem', textAlign: 'center'}}>{state.users[state.currentUser.id].mmr} MMR</p>
+                <p><strong>Matches Played:</strong> {state.users[state.currentUser.id].matchesPlayed}</p>
+                <p><strong>K-Factor:</strong> {RatingService.getKFactor(state.users[state.currentUser.id].matchesPlayed)}</p>
+            </div>
+            <div className="card fade-in"><h3><i className="fas fa-medal"></i> Achievements</h3><div style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '10px'}}>{Object.values(ALL_ACHIEVEMENTS).map(a=><div key={a.id} className={`achievement-badge ${state.currentUser.achievements.includes(a.id) ? 'earned' : ''}`}><i className={`fas ${a.icon}`}></i><span>{a.title}</span></div>)}</div></div>
+        </>);
+        const MyMatchesTab = () => {
+             const myMatches = state.matches.filter(m => m.creatorId === state.currentUser.id || m.participants.includes(state.currentUser.id));
+             return (<div className="fade-in">
+                {myMatches.map(item => <div key={item.id} className="list-item" onClick={() => onNavigate({page: 'matchDetail', params: {matchId: item.id}})}>
+                     <img src={state.venues.find(v => v.id === item.venueId).img} className="list-item-img" alt={item.sport}/>
+                     <div className="list-item-content">
+                         <h3>{item.sport}</h3>
+                         <p>{item.date} @ {item.time}</p>
+                         <span className={`btn btn-sm ${item.status === 'upcoming' ? 'btn-primary' : 'btn-secondary'}`}>{item.status}</span>
+                     </div>
+                </div>)}
+             </div>)
+        }
+        const BookingsTab = () => {
+            const handleCancel = (bookingId) => { dispatch({type: 'CANCEL_BOOKING', payload: {bookingId}}); showToast('Booking cancelled.'); };
+            return (<div className="fade-in">
+                <h3>Upcoming Bookings</h3>
+                {state.bookings.filter(b => b.type === 'upcoming').map(b => <div key={b.id} className="list-item"><img src={state.venues.find(v => v.id === b.venueId).img} className="list-item-img" alt={b.sport}/><div><h3>{b.sport} at {state.venues.find(v => v.id === b.venueId).name}</h3><p>{b.date} @ {b.time}</p></div><button className="btn btn-sm btn-danger" onClick={() => handleCancel(b.id)}>Cancel</button></div>)}
+                <h3>Past Bookings</h3>
+                {state.bookings.filter(b => b.type === 'past').map(b => <div key={b.id} className="list-item"><img src={state.venues.find(v => v.id === b.venueId).img} className="list-item-img" alt={b.sport}/><div><h3>{b.sport} at {state.venues.find(v => v.id === b.venueId).name}</h3><p>{b.date} @ {b.time}</p></div></div>)}
+            </div>)
+        }
+        const FriendsTab = () => (<div className="fade-in">{state.currentUser.friends.map(fId => <div key={fId} className="list-item" onClick={() => onNavigate({page: 'playerProfile', params: {playerId: fId}})}><img src={state.users[fId].avatar} className="list-item-img" alt={state.users[fId].name}/><h3>{state.users[fId].name}</h3></div>)}</div>);
+        const RewardsTab = () => {
+            const streak = state.currentUser.activityStreak;
+            const progress = (streak / 5) * 100;
+            const handleClaim = () => { dispatch({type: 'CLAIM_REWARD'}); showToast('Reward claimed! You have 1 free session credit.'); };
+            return (<div className="fade-in card">
+                <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <h3><i className="fas fa-gift"></i> Activity Rewards</h3>
+                    <i className="fas fa-info-circle info-icon" onClick={() => setModal('rewardInfo')}></i>
+                </div>
+                <p>Play on 5 different days within a 2-week period to earn a free session!</p>
+                <p><strong>Your current streak: {streak} / 5 days</strong></p>
+                <div className="progress-bar"><div className="progress-bar-inner" style={{width: `${progress}%`}}></div></div>
+                <button className="btn btn-primary btn-full" style={{marginTop: '20px'}} disabled={streak < 5} onClick={handleClaim}>{streak < 5 ? 'Complete Your Streak' : 'Claim Free Session'}</button>
+            </div>);
+        };
+        const SettingsTab = () => {
+            const [prefs, setPrefs] = useState(state.currentUser.preferences);
+            const [contact, setContact] = useState(state.currentUser.emergencyContact);
+            const savePrefs = () => { dispatch({type: 'UPDATE_USER_PREFERENCES', payload: prefs}); showToast("Preferences saved!"); };
+            const saveContact = () => { dispatch({type: 'UPDATE_EMERGENCY_CONTACT', payload: {contact}}); showToast("Emergency contact updated!"); };
+            return (<>
+            <div className="card fade-in">
+                <h3><i className="fas fa-cog"></i> General</h3>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span>Dark Mode</span><label className="switch"><input type="checkbox" checked={theme === 'dark'} onChange={toggleTheme} /><span className="slider round"></span></label>
+                </div>
+            </div>
+            <div className="card fade-in">
+                <h3><i className="fas fa-user-shield"></i> Safety</h3>
+                <div className="input-group"><label>Emergency Contact Email</label><input type="email" value={contact} onChange={e => setContact(e.target.value)} placeholder="e.g., friend@email.com" /></div>
+                <button className="btn btn-primary btn-full" onClick={saveContact}>Save Contact</button>
+            </div>
+            <div className="card fade-in">
+                <h3><i className="fas fa-sliders-h"></i> Preferences</h3>
+                <div className="input-group"><label>Favorite Sports (comma separated)</label><input type="text" value={prefs.favoriteSports.join(', ')} onChange={e => setPrefs(p => ({...p, favoriteSports: e.target.value.split(', ')}))} /></div>
+                <div className="input-group"><label>Play Radius (km)</label><input type="number" value={prefs.playRadius} onChange={e => setPrefs(p => ({...p, playRadius: e.target.value}))} /></div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+                    <span>Opt-out of LLM Training</span><label className="switch"><input type="checkbox" checked={prefs.llmTrainingOptOut} onChange={() => setPrefs(p => ({...p, llmTrainingOptOut: !p.llmTrainingOptOut}))} /><span className="slider round"></span></label>
+                </div>
+                <button className="btn btn-primary btn-full" onClick={savePrefs}>Save Preferences</button>
+            </div>
+            </>);
+        };
+
+        return (<>
+            <Header title="Profile" onBack={() => onNavigate({ page: 'home' })} />
+            <div className="profile-header"><img src={state.currentUser.profilePic} alt="Profile" className="profile-avatar" onClick={() => setEditOpen(true)}/><h2>{state.currentUser.name}</h2></div>
+            <div className="profile-tabs"><button className={`btn ${activeTab === 'stats' ? 'btn-primary' : 'btn-secondary'} btn-sm`} onClick={() => setActiveTab('stats')}>Rating</button><button className={`btn ${activeTab === 'myMatches' ? 'btn-primary' : 'btn-secondary'} btn-sm`} onClick={() => setActiveTab('myMatches')}>Matches</button><button className={`btn ${activeTab === 'bookings' ? 'btn-primary' : 'btn-secondary'} btn-sm`} onClick={() => setActiveTab('bookings')}>Bookings</button><button className={`btn ${activeTab === 'friends' ? 'btn-primary' : 'btn-secondary'} btn-sm`} onClick={() => setActiveTab('friends')}>Friends</button><button className={`btn ${activeTab === 'rewards' ? 'btn-primary' : 'btn-secondary'} btn-sm`} onClick={() => setActiveTab('rewards')}>Rewards</button><button className={`btn ${activeTab === 'settings' ? 'btn-primary' : 'btn-secondary'} btn-sm`} onClick={() => setActiveTab('settings')}>Settings</button></div>
+            {activeTab === 'stats' && <StatsTab />}{activeTab === 'myMatches' && <MyMatchesTab />}{activeTab === 'bookings' && <BookingsTab />}{activeTab === 'friends' && <FriendsTab />}{activeTab === 'rewards' && <RewardsTab />}{activeTab === 'settings' && <SettingsTab />}
+            <button className="btn btn-secondary btn-full" style={{marginTop: '20px'}} onClick={onSignOut}>Sign Out</button>
+
+            {modal === 'ratingInfo' && <Modal title="User Level Rating System" close={() => setModal(null)}>
+                <p>We use an ELO-based system to ensure fair matchmaking. Your rating (MMR) updates after every completed match.</p>
+                <h5>Expected Outcome</h5>
+                <p>The system first calculates the probability of you winning against an opponent:</p>
+                <img src="https://i.imgur.com/2T5g553.png" alt="Expected win probability formula" className="formula-image"/>
+                <h5>Rating Update</h5>
+                <p>Your rating is then adjusted based on the actual result vs. the expected outcome:</p>
+                <img src="https://i.imgur.com/u19tL0w.png" alt="Rating update formula" className="formula-image"/>
+                <h5>Dynamic K-Factor</h5>
+                <p>The 'K' value determines how much your rating changes. It's higher for new players and lower for veterans to ensure ratings stabilize over time.</p>
+                <ul><li><strong>K=32:</strong> First 5 matches</li><li><strong>K=16:</strong> 5-20 matches</li><li><strong>K=8:</strong> 20+ matches</li></ul>
+            </Modal>}
+             {modal === 'rewardInfo' && <Modal title="Activity Rewards" close={() => setModal(null)}>
+                <p>Our rewards program is designed to encourage consistent, healthy habits, aligning with WHO recommendations for weekly exercise.</p>
+                <p>This initiative is made possible through a cost-effective investment of a small portion of the government's annual sports budget, aiming to boost public health and reduce long-term healthcare costs.</p>
+             </Modal>}
+             {isEditOpen && <Modal isOpen={true} close={() => setEditOpen(false)} title="Edit Profile">
+                <div className="input-group"><label>Name</label><input type="text" defaultValue={state.currentUser.name} onChange={e => saveProfile({name: e.target.value})} /></div>
+                <div className="input-group"><label>Email</label><input type="email" defaultValue={state.currentUser.email} onChange={e => saveProfile({email: e.target.value})} /></div>
+                <button className="btn btn-primary btn-full" onClick={() => setEditOpen(false)}>Save</button>
+             </Modal>}
+        </>);
+    };
+    const MapPage = ({ onBack, onNavigate }) => {
+        const { state } = useContext(AppStateContext);
+        const mapContainer = useRef();
+        const [weatherData, setWeatherData] = useState({});
+        useEffect(() => {
+            const fetchWeather = async (lat, lng, id) => {
+                const apiKey = '37ff70b0145421b1aa91710a6822f4db';
+                const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`);
+                const data = await res.json();
+                setWeatherData(prev => ({...prev, [id]: data}));
+            };
+            state.venues.forEach(v => fetchWeather(v.lat, v.lng, v.id));
+
+            const map = L.map(mapContainer.current).setView([22.3193, 114.1694], 11);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            const orangeIcon = new L.Icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
+            state.venues.forEach(venue => {
+                const wd = weatherData[venue.id] || {};
+                const weatherDesc = wd.weather ? wd.weather[0].description : 'Loading...';
+                const temp = wd.main ? `${wd.main.temp}°C` : '';
+                const freeCourts = Math.floor(Math.random() * 5);
+                L.marker([venue.lat, venue.lng], {icon: orangeIcon}).addTo(map)
+                    .bindPopup(`<div class="venue-popup"><h3>${venue.name}</h3><img src="${venue.img}" alt="${venue.name}"><p>${venue.description}</p><p>Free Courts Today: ${freeCourts}</p><p class="weather-info">Weather: ${weatherDesc} ${temp}</p><button onclick="window.navigateToVenue('${venue.id}')">Book Now</button></div>`);
+            });
+            return () => map.remove();
+        }, [state.venues, weatherData]);
+        return <><Header title="Venues Map" onBack={onBack} /><div ref={mapContainer} id="map" style={{height: 'calc(100% - 60px)'}} /></>;
+    };
+
+    // --- AI CHATBOT (with Voice Simulation) --- //
+    const ChatbotModal = ({ isOpen, close, onNavigate }) => {
+        const [msgs, setMsgs] = useState([{ s: 'b', t: "Hi! I'm your GoPlay assistant. Try 'find a basketball match' or 'show me my friends'." }]); 
+        const [input, setInput] = useState(""); 
+        const [isListening, setIsListening] = useState(false);
+        const messagesEndRef = useRef(null);
+        
+        const handleVoiceInput = () => {
+            setIsListening(true);
+            setTimeout(() => { // Simulate listening and speech-to-text
+                const commands = ["Find a youth league match", "Show me the rewards page", "Book a tennis court", "Show me the map", "Go to events"];
+                setInput(commands[Math.floor(Math.random()*commands.length)]);
+                setIsListening(false);
+            }, 2000); 
+        };
+
+        const hS = () => { if(!input.trim()) return; const newMsgs = [...msgs, { s: 'u', t: input }]; setMsgs(newMsgs); pC(input); setInput(""); };
+        const pC = (cmd) => { setTimeout(() => { let r; cmd = cmd.toLowerCase(); if (cmd.includes('match')) { r = "Sure! Taking you to the match list."; onNavigate({ page: 'matchmaking' }); close(); } else if (cmd.includes('book')) { r = "Let's find a venue."; onNavigate({ page: 'booking' }); close(); } else if (cmd.includes('friend')) { r = "Here are your friends."; onNavigate({ page: 'profile', params: {tab: 'friends'} }); close(); } else if (cmd.includes('youth league')) { r = "Opening the Youth League page now."; onNavigate({ page: 'youthLeague' }); close(); } else if (cmd.includes('reward')) { r = "Let's check your rewards progress."; onNavigate({ page: 'profile', params: { tab: 'rewards' } }); close(); } else if (cmd.includes('map')) { r = "Showing the venues map."; onNavigate({ page: 'map' }); close(); } else if (cmd.includes('events')) { r = "Showing upcoming events."; onNavigate({ page: 'events' }); close(); } else if (cmd.includes('news')) { r = "Opening news and tips."; onNavigate({ page: 'news' }); close(); } else { r = "Sorry, I can't help with that. Ask me to find a match, book a venue, or see your friends."; } setMsgs(prev => [...prev, { s: 'b', t: r }]); }, 1000); };
+        useEffect(() => { messagesEndRef.current?.scrollIntoView({ behavior: "smooth" }); }, [msgs]);
+        
+        return (<Modal isOpen={isOpen} close={close} title="AI Assistant">
+            <div className="chatbot-messages">{msgs.map((m, i) => <div key={i} className={`chat-bubble ${m.s==='u' ? 'user' : 'bot'}`}>{m.t}</div>)}<div ref={messagesEndRef} /></div>
+            <div style={{display: 'flex', gap: '10px'}}>
+                <input type="text" value={input} onChange={e => setInput(e.target.value)} placeholder={isListening ? "Listening..." : "Ask or speak..."} onKeyPress={e => e.key === 'Enter' && hS()} />
+                <button className={`btn ${isListening ? 'btn-danger' : 'btn-secondary'}`} onClick={handleVoiceInput}><i className={`fas ${isListening ? 'fa-microphone-slash' : 'fa-microphone'}`}></i></button>
+                <button className="btn btn-primary" onClick={hS}><i className="fas fa-paper-plane"></i></button>
+            </div>
+            <p style={{fontSize: '0.7rem', color: 'var(--text-muted-light)', textAlign: 'center', marginTop: '10px'}}>PDPO Compliant: E2EE enabled. Your conversations are private.</p>
+        </Modal>);
+    };
+
+    // --- MATCH DETAIL PAGE --- //
+    const MatchDetailPage = ({ matchId, onBack, onNavigate }) => {
+        const { state, dispatch } = useContext(AppStateContext);
+        const showToast = useContext(ToastContext);
+        const [modal, setModal] = useState(null);
+        const [feeModal, setFeeModal] = useState(false);
+        const [commentText, setCommentText] = useState('');
+        const match = state.matches.find(m => m.id === matchId);
+        const venue = state.venues.find(v => v.id === match.venueId);
+        const [weather, setWeather] = useState(null);
+        const participants = match.participants.map(pId => state.users[pId]);
+        const isJoined = match.participants.includes(state.currentUser.id);
+        const isCreator = match.creatorId === state.currentUser.id;
+        const isCompleted = match.status === 'completed';
+        const isYouth = state.users[state.currentUser.id].isYouth;
+        const canJoin = match.participants.length < match.totalSlots && match.status === 'upcoming' && (!match.isLeague || isYouth);
+        const lastCheckIn = state.currentUser.lastCheckIn;
+
+        useEffect(() => {
+            const fetchWeather = async () => {
+                const apiKey = '37ff70b0145421b1aa91710a6822f4db';
+                const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${venue.lat}&lon=${venue.lng}&appid=${apiKey}&units=metric`);
+                const data = await res.json();
+                setWeather(data);
+            };
+            fetchWeather();
+        }, [venue]);
+
+        const handleJoin = () => {
+            if (venue.price > 0) {
+                setFeeModal(true);
+            } else {
+                dispatch({ type: 'JOIN_MATCH', payload: { matchId, isLeague: match.isLeague } });
+                showToast('Joined the match!');
+            }
+        };
+
+        const handleConfirmJoin = () => {
+            dispatch({ type: 'JOIN_MATCH', payload: { matchId, isLeague: match.isLeague } });
+            showToast('Joined the match! Payment processed.');
+            setFeeModal(false);
+        };
+
+        const handleLeave = () => {
+            dispatch({ type: 'LEAVE_MATCH', payload: { matchId } });
+            showToast('Left the match.');
+        };
+
+        const handleAddComment = () => {
+            if (commentText.trim()) {
+                dispatch({ type: 'ADD_MATCH_COMMENT', payload: { matchId, text: commentText } });
+                setCommentText('');
+            }
+        };
+
+        const handleReportResult = (result) => {
+            dispatch({ type: 'REPORT_RESULT', payload: { matchId, result } });
+            showToast('Result reported!');
+        };
+
+        const handleCheckIn = (code) => {
+            if (code === venue.checkInCode) {
+                dispatch({ type: 'CHECK_IN', payload: { venueId: venue.id, time: Date.now() } });
+                showToast('Checked in successfully!');
+                setModal(null);
+            } else {
+                showToast('Invalid code. Try again.');
+            }
+        };
+
+        const handleCheckOut = () => {
+            dispatch({ type: 'CHECK_OUT' });
+            showToast('Checked out successfully!');
+            setModal(null);
+        };
+
+        const weatherDesc = weather?.weather?.[0]?.description || 'Loading...';
+        const temp = weather?.main?.temp || '';
+
+        return (
+            <>
+                <Header title={`${match.sport} Match`} onBack={onBack} />
+                <div className="fade-in">
+                    <img src={venue.img} className="detail-header-img" alt={venue.name} />
+                    <h2>{match.sport} - {match.skill}</h2>
+                    <p><i className="fas fa-map-marker-alt"></i> {venue.name}, {venue.location}</p>
+                    <p><i className="fas fa-calendar-alt"></i> {match.date} at {match.time}</p>
+                    <p><i className="fas fa-users"></i> {match.participants.length}/{match.totalSlots} players</p>
+                    <p><i className="fas fa-dollar-sign"></i> HKD ${match.cost} (split if applicable)</p>
+                    <div className="weather-card">
+                        <i className="fas fa-cloud-sun weather-icon"></i>
+                        <div>
+                            <h4>Weather Forecast</h4>
+                            <p>{weatherDesc} - {temp}°C</p>
+                        </div>
+                    </div>
+                    <h3>Participants</h3>
+                    <div className="participant-list">
+                        {participants.map(p => (
+                            <img key={p.id} src={p.avatar} className="participant-avatar" alt={p.name} onClick={() => onNavigate({page: 'playerProfile', params: {playerId: p.id}})} />
+                        ))}
+                    </div>
+                    {!isJoined && canJoin && <button className="btn btn-primary btn-full" onClick={handleJoin}>Join Match</button>}
+                    {isJoined && !isCompleted && <button className="btn btn-danger btn-full" onClick={handleLeave}>Leave Match</button>}
+                    {isCreator && !isCompleted && <button className="btn btn-warning btn-full" onClick={() => showToast('Match cancelled (simulated).')}>Cancel Match</button>}
+                    {isJoined && isCompleted && !match.result && <button className="btn btn-primary btn-full" onClick={() => setModal('reportResult')}>Report Result</button>}
+                    {match.result && <div className="card"><h3>Result</h3><p>Winner: {state.users[match.result.winner].name}</p><p>Score: {match.result.score}</p></div>}
+                    <h3>Comments</h3>
+                    <div className="comment-section">
+                        {match.comments.map((c, i) => <div key={i} className="comment"><div className="comment-user">{state.users[c.userId].name} <span className="post-time">{c.time}</span></div>{c.text}</div>)}
+                        <div className="input-group"><input type="text" value={commentText} onChange={e => setCommentText(e.target.value)} placeholder="Add a comment..." onKeyPress={e => { if (e.key === 'Enter') handleAddComment(); }} /></div>
+                    </div>
+                    <button className="btn btn-secondary btn-full" onClick={() => setModal('safetyCheckIn')}>Safety Check-In</button>
+                </div>
+                {feeModal && <Modal isOpen={true} close={() => setFeeModal(false)} title="Fee Split">
+                    <p>Joining this match requires a fee of HKD ${StripeService.calculateSplit(match.cost, match.participants.length + 1)} (split among participants).</p>
+                    <button className="btn btn-primary btn-full" onClick={handleConfirmJoin}>Confirm & Pay</button>
+                </Modal>}
+                {modal === 'reportResult' && <Modal isOpen={true} close={() => setModal(null)} title="Report Result">
+                    <p>Who won?</p>
+                    <button className="btn btn-primary btn-full" onClick={() => handleReportResult({ winner: state.currentUser.id, score: 'Win' })}>I Won</button>
+                    <button className="btn btn-secondary btn-full" onClick={() => handleReportResult({ winner: match.participants.find(p => p !== state.currentUser.id), score: 'Loss' })}>Opponent Won</button>
+                </Modal>}
+                {modal === 'safetyCheckIn' && <Modal isOpen={true} close={() => setModal(null)} title="Safety Check-In">
+                    {lastCheckIn ? (
+                        <>
+                            <p>Checked in at {new Date(lastCheckIn.time).toLocaleString()}.</p>
+                            <button className="btn btn-primary btn-full" onClick={handleCheckOut}>Check Out</button>
+                        </>
+                    ) : (
+                        <>
+                            <p>Enter venue check-in code:</p>
+                            <div className="input-group"><input type="text" placeholder="e.g., VP123" onKeyPress={e => e.key === 'Enter' && handleCheckIn(e.target.value)} /></div>
+                            <button className="btn btn-primary btn-full" onClick={() => handleCheckIn(document.querySelector('input').value)}>Check In</button>
+                        </>
+                    )}
+                </Modal>}
+            </>
+        );
+    };
+
+    // --- VENUE DETAIL PAGE --- //
+    const VenueDetailPage = ({ venueId, onBack, onNavigate }) => {
+        const { state, dispatch } = useContext(AppStateContext);
+        const showToast = useContext(ToastContext);
+        const venue = state.venues.find(v => v.id === venueId);
+        const [rating, setRating] = useState(0);
+        const [reviewText, setReviewText] = useState('');
+        const [weather, setWeather] = useState(null);
+        const lastCheckIn = state.currentUser.lastCheckIn;
+        const freeCourts = Math.floor(Math.random() * venue.timeSlots.length / 2);
+
+        useEffect(() => {
+            const fetchWeather = async () => {
+                const apiKey = '37ff70b0145421b1aa91710a6822f4db';
+                const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${venue.lat}&lon=${venue.lng}&appid=${apiKey}&units=metric`);
+                const data = await res.json();
+                setWeather(data);
+            };
+            fetchWeather();
+        }, [venue]);
+
+        const handleSubmitReview = () => {
+            if (rating > 0 && reviewText.trim()) {
+                dispatch({ type: 'ADD_VENUE_REVIEW', payload: { venueId, rating, text: reviewText } });
+                setRating(0);
+                setReviewText('');
+                showToast('Review submitted!');
+            }
+        };
+
+        const handleCheckIn = (code) => {
+            if (code === venue.checkInCode) {
+                dispatch({ type: 'CHECK_IN', payload: { venueId: venue.id, time: Date.now() } });
+                showToast('Checked in successfully!');
+            } else {
+                showToast('Invalid code. Try again.');
+            }
+        };
+
+        const handleCheckOut = () => {
+            dispatch({ type: 'CHECK_OUT' });
+            showToast('Checked out successfully!');
+        };
+
+        const weatherDesc = weather?.weather?.[0]?.description || 'Loading...';
+        const temp = weather?.main?.temp || '';
+
+        return (
+            <>
+                <Header title={venue.name} onBack={onBack} />
+                <div className="fade-in">
+                    <img src={venue.img} className="detail-header-img" alt={venue.name} />
+                    <p>{venue.description}</p>
+                    <p><i className="fas fa-map-marker-alt"></i> {venue.location}</p>
+                    <p><i className="fas fa-dollar-sign"></i> HKD ${venue.price}/hr</p>
+                    <p><i className="fas fa-star"></i> Rating: {venue.rating}</p>
+                    <p><i className="fas fa-court-hammer"></i> Free Courts Today: {freeCourts}</p>
+                    <div className="weather-card">
+                        <i className="fas fa-cloud-sun weather-icon"></i>
+                        <div>
+                            <h4>Current Weather</h4>
+                            <p>{weatherDesc} - {temp}°C</p>
+                        </div>
+                    </div>
+                    <h3>Facilities</h3>
+                    <ul>{venue.facilities.map(f => <li key={f}>{f}</li>)}</ul>
+                    <h3>Reviews</h3>
+                    {venue.reviews.map((r, i) => (
+                        <div key={i} className="comment">
+                            <div className="comment-user">{state.users[r.userId].name}</div>
+                            <p>{'★'.repeat(r.rating)}{'☆'.repeat(5 - r.rating)}</p>
+                            <p>{r.text}</p>
+                        </div>
+                    ))}
+                    <div className="review-form">
+                        <h3>Add Review</h3>
+                        <div className="rating-select">
+                            {[1,2,3,4,5].map(i => <i key={i} className={`fas fa-star rating-star ${i <= rating ? 'selected' : ''}`} onClick={() => setRating(i)}></i>)}
+                        </div>
+                        <div className="input-group"><textarea value={reviewText} onChange={e => setReviewText(e.target.value)} placeholder="Your review..."></textarea></div>
+                        <button className="btn btn-primary btn-full" onClick={handleSubmitReview} disabled={rating === 0 || !reviewText.trim()}>Submit Review</button>
+                    </div>
+                    <button className="btn btn-primary btn-full" onClick={() => onNavigate({page: 'bookingProcess', params: {venueId}})}>Book Now</button>
+                    <button className="btn btn-secondary btn-full" onClick={() => setModal('safetyCheckIn')}>Safety Check-In</button>
+                </div>
+                {modal === 'safetyCheckIn' && <Modal isOpen={true} close={() => setModal(null)} title="Safety Check-In">
+                    {lastCheckIn ? (
+                        <>
+                            <p>Checked in at {new Date(lastCheckIn.time).toLocaleString()}.</p>
+                            <button className="btn btn-primary btn-full" onClick={handleCheckOut}>Check Out</button>
+                        </>
+                    ) : (
+                        <>
+                            <p>Enter venue check-in code:</p>
+                            <div className="input-group"><input type="text" placeholder="e.g., VP123" onKeyPress={e => e.key === 'Enter' && handleCheckIn(e.target.value)} /></div>
+                            <button className="btn btn-primary btn-full" onClick={() => handleCheckIn(document.querySelector('input').value)}>Check In</button>
+                        </>
+                    )}
+                </Modal>}
+            </>
+        );
+    };
+
+    // --- CREATE MATCH PROCESS --- //
+    const CreateMatchProcess = ({ onBack, onNavigate }) => {
+        const { state, dispatch } = useContext(AppStateContext);
+        const showToast = useContext(ToastContext);
+        const [step, setStep] = useState(1);
+        const [matchDetails, setMatchDetails] = useState({ sport: '', venueId: '', date: '', time: '', skill: 'All Levels', totalSlots: 4, cost: 0, isLeague: false, isPrivate: false, invites: [] });
+        const updateDetail = (key, value) => setMatchDetails(p => ({...p, [key]: value}));
+
+        const handleCreateMatch = () => {
+            const newMatch = { ...matchDetails, id: `m${Date.now()}`, creatorId: state.currentUser.id, participants: [state.currentUser.id], status: 'upcoming', result: null, comments: [] };
+            dispatch({ type: 'CREATE_MATCH', payload: { newMatch } });
+            showToast('Match created!');
+            onNavigate({ page: 'matchDetail', params: { matchId: newMatch.id } });
+        };
+
+        return (
+            <>
+                <Header title="Create Match" onBack={onBack} />
+                <div className="wizard-steps">
+                    <div className={`wizard-step ${step === 1 ? 'active' : ''}`}><div className="wizard-step-circle">1</div>Sport</div>
+                    <div className={`wizard-step ${step === 2 ? 'active' : ''}`}><div className="wizard-step-circle">2</div>Venue</div>
+                    <div className={`wizard-step ${step === 3 ? 'active' : ''}`}><div className="wizard-step-circle">3</div>Date/Time</div>
+                    <div className={`wizard-step ${step === 4 ? 'active' : ''}`}><div className="wizard-step-circle">4</div>Invites</div>
+                    <div className={`wizard-step ${step === 5 ? 'active' : ''}`}><div className="wizard-step-circle">5</div>Confirm</div>
+                </div>
+
+                {step === 1 && (<div className="fade-in"><h3>Step 1: Match Details</h3>
+                    <div className="input-group"><label>Sport</label><select value={matchDetails.sport} onChange={e => updateDetail('sport', e.target.value)}><option value="">Select Sport</option>{[...new Set(state.venues.map(v => v.sport))].map(s => <option key={s} value={s}>{s}</option>)}</select></div>
+                    <div className="input-group"><label>Skill Level</label><select value={matchDetails.skill} onChange={e => updateDetail('skill', e.target.value)}><option>All Levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div>
+                    <div className="input-group"><label>Total Slots</label><input type="number" value={matchDetails.totalSlots} onChange={e => updateDetail('totalSlots', parseInt(e.target.value))} min="2" /></div>
+                    <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '15px'}}>
+                        <span>League Match</span><label className="switch"><input type="checkbox" checked={matchDetails.isLeague} onChange={() => updateDetail('isLeague', !matchDetails.isLeague)} /><span className="slider round"></span></label>
+                    </div>
+                    <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '15px'}}>
+                        <span>Private Match</span><label className="switch"><input type="checkbox" checked={matchDetails.isPrivate} onChange={() => updateDetail('isPrivate', !matchDetails.isPrivate)} /><span className="slider round"></span></label>
+                    </div>
+                    <button className="btn btn-primary btn-full" onClick={() => setStep(2)} disabled={!matchDetails.sport}>Next: Select Venue</button>
+                </div>)}
+
+                {step === 2 && (<div className="fade-in"><h3>Step 2: Select Venue</h3>{state.venues.filter(v=>v.sport.toLowerCase() === matchDetails.sport.toLowerCase()).map(v => <div key={v.id} className="list-item" onClick={() => { updateDetail('venueId', v.id); updateDetail('cost', v.price); setStep(3); }}><img src={v.img} className="list-item-img" alt={v.name} /><div><h3>{v.name}</h3><p>{v.location}</p></div></div>)}<button className="btn btn-secondary btn-full" onClick={() => setStep(1)}>Back</button></div>)}
+
+                {step === 3 && (<div className="fade-in"><h3>Step 3: Select Date & Time</h3>
+                    <div className="input-group"><label>Date</label><input type="date" value={matchDetails.date} onChange={e => updateDetail('date', e.target.value)} /></div>
+                    <div className="input-group"><label>Time</label><input type="time" value={matchDetails.time} onChange={e => updateDetail('time', e.target.value)} /></div>
+                     <button className="btn btn-primary btn-full" onClick={() => setStep(4)} disabled={!matchDetails.date || !matchDetails.time}>Next: Invites</button>
+                     <button className="btn btn-secondary btn-full" onClick={() => setStep(2)}>Back</button>
+                </div>)}
+                
+                {step === 4 && (<div className="fade-in"><h3>Step 4: Invite Friends (Optional)</h3>
+                    {state.currentUser.friends.map(fId => <div key={fId} className="list-item"><img src={state.users[fId].avatar} className="list-item-img" alt={state.users[fId].name}/><h3>{state.users[fId].name}</h3><label className="switch"><input type="checkbox" checked={matchDetails.invites.includes(fId)} onChange={() => updateDetail('invites', matchDetails.invites.includes(fId) ? matchDetails.invites.filter(id => id !== fId) : [...matchDetails.invites, fId])} /><span className="slider round"></span></label></div>)}
+                    <button className="btn btn-primary btn-full" onClick={() => setStep(5)}>Next: Confirm</button>
+                    <button className="btn btn-secondary btn-full" onClick={() => setStep(3)}>Back</button>
+                </div>)}
+                
+                {step === 5 && (<div className="fade-in"><h3>Step 5: Review & Confirm</h3>
+                    <div className="card">
+                        <p><strong>Sport:</strong> {matchDetails.sport}</p>
+                        <p><strong>Venue:</strong> {state.venues.find(v => v.id === matchDetails.venueId)?.name}</p>
+                        <p><strong>Date & Time:</strong> {matchDetails.date} at {matchDetails.time}</p>
+                        <p><strong>Players:</strong> 1/{matchDetails.totalSlots}</p>
+                        <p><strong>Cost:</strong> HKD ${matchDetails.cost} (will be split)</p>
+                        <p><strong>Type:</strong> {matchDetails.isLeague ? 'League' : 'Casual'}, {matchDetails.isPrivate ? 'Private' : 'Public'}</p>
+                        <p><strong>Invites:</strong> {matchDetails.invites.map(id => state.users[id].name).join(', ') || 'None'}</p>
+                    </div>
+                    <button className="btn btn-primary btn-full" onClick={handleCreateMatch}>Create Match</button>
+                    <button className="btn btn-secondary btn-full" onClick={() => setStep(4)}>Back</button>
+                </div>)}
+            </>
+        );
+    };
+
+    // --- PLAYER PROFILE PAGE --- //
+    const PlayerProfilePage = ({ playerId, onBack }) => {
+        const { state, dispatch } = useContext(AppStateContext);
+        const showToast = useContext(ToastContext);
+        const player = state.users[playerId];
+        const isFriend = state.currentUser.friends.includes(playerId);
+        const handleAddFriend = () => {
+            dispatch({ type: 'ADD_FRIEND', payload: { friendId: playerId } });
+            showToast(`Added ${player.name} as friend!`);
+        };
+
+        return (
+            <>
+                <Header title={player.name} onBack={onBack} />
+                <div className="profile-header">
+                    <img src={player.avatar} className="profile-avatar" alt={player.name} />
+                    <h2>{player.name}</h2>
+                </div>
+                <div className="card">
+                    <p><strong>MMR:</strong> {player.mmr}</p>
+                    <p><strong>Matches Played:</strong> {player.matchesPlayed}</p>
+                    <p><strong>Availability:</strong> {player.availability}</p>
+                </div>
+                {!isFriend && <button className="btn btn-primary btn-full" onClick={handleAddFriend}>Add Friend</button>}
+            </>
+        );
+    };
+
+    // --- NOTIFICATIONS PAGE --- //
+    const NotificationsPage = ({ onBack }) => {
+        const { state, dispatch } = useContext(AppStateContext);
+        useEffect(() => { dispatch({ type: 'MARK_NOTIFICATIONS_READ' }); }, []);
+        return (
+            <>
+                <Header title="Notifications" onBack={onBack} />
+                <ul className="notification-list fade-in">
+                    {state.notifications.map(n => (
+                        <li key={n.id} className={`notification-item ${n.read ? '' : 'unread'}`} onClick={() => dispatch({ type: 'MARK_NOTIFICATION_READ', payload: { id: n.id } })}>
+                            {n.text} <span className="post-time">{n.time}</span>
+                        </li>
+                    ))}
+                </ul>
+            </>
+        );
+    };
+
+    // --- MAIN APP CONTROLLER --- //
+    const App = () => {
+        const [view, setView] = useState({ page: 'home', params: {} }); const [viewHistory, setViewHistory] = useState([{ page: 'home', params: {} }]);
+        const [loading, setLoading] = useState(true); const [isAuthenticated, setIsAuthenticated] = useState(false); const [authView, setAuthView] = useState('login');
+        const showToast = useContext(ToastContext); const [isChatOpen, setChatOpen] = useState(false);
+        useEffect(() => { const loggedIn = localStorage.getItem('isLoggedIn'); if(loggedIn) setIsAuthenticated(true); setTimeout(() => setLoading(false), 500); }, []);
+        const hL = () => { setIsAuthenticated(true); localStorage.setItem('isLoggedIn', 'true'); };
+        const hSO = () => { setIsAuthenticated(false); localStorage.removeItem('isLoggedIn'); setView({ page: 'home' }); setViewHistory([{ page: 'home' }]); showToast("You've been signed out."); };
+        const navigate = (newView) => { if(newView.page !== view.page || JSON.stringify(newView.params) !== JSON.stringify(view.params)) { setView(newView); setViewHistory(prev => [...prev, newView]); } const pageContainer = document.querySelector('.page-container'); if(pageContainer) pageContainer.scrollTo(0, 0);};
+        const goBack = () => { if (viewHistory.length > 1) { const newHistory = viewHistory.slice(0, -1); setViewHistory(newHistory); setView(newHistory[newHistory.length-1]); } };
+        window.navigateToVenue = (id) => navigate({page: 'venueDetail', params: {venueId: id}});
+        
+        const renderPage = () => {
+            if (loading) return <div className="page-container"><LoadingSkeleton/><LoadingSkeleton/></div>;
+            return (<div className="page-container">
+            {(() => {
+                switch (view.page) {
+                    case 'home': return <HomePage onNavigate={navigate} />;
+                    case 'explore': return <ExplorePage onNavigate={navigate} />;
+                    case 'matchmaking': return <MatchmakingPage onNavigate={navigate} />;
+                    case 'createMatch': return <CreateMatchProcess onBack={goBack} onNavigate={navigate} />;
+                    case 'youthLeague': return <YouthLeaguePage onNavigate={navigate} />;
+                    case 'venueDetail': return <VenueDetailPage venueId={view.params.venueId} onBack={goBack} onNavigate={navigate} />;
+                    case 'bookingProcess': return <BookingProcess venueId={view.params.venueId} onBack={goBack} onNavigate={navigate} />;
+                    case 'matchDetail': return <MatchDetailPage matchId={view.params.matchId} onBack={goBack} onNavigate={navigate} />;
+                    case 'playerProfile': return <PlayerProfilePage playerId={view.params.playerId} onBack={goBack}/>;
+                    case 'profile': return <ProfilePage onNavigate={navigate} onSignOut={hSO} params={view.params} />;
+                    case 'map': return <MapPage onBack={goBack} onNavigate={navigate} />;
+                    case 'notifications': return <NotificationsPage onBack={goBack} />;
+                    case 'booking': return <BookingPage onNavigate={navigate} />;
+                    default: return <HomePage onNavigate={navigate} />;
+                }
+            })()}
+            </div>
+            );
+        };
+
+        if (loading && !localStorage.getItem('isLoggedIn')) { return <SplashScreen onFinish={() => setLoading(false)} />; }
+        if (loading) { return <div className="main-container"></div>; /* Blank while checking auth */ }
+        
+        return (<div className="main-container">{!isAuthenticated ? (authView === 'login' ? <AuthPage onLogin={hL} setView={setAuthView} /> : <RegisterPage onRegister={hL} setView={setAuthView} />) : (<>{renderPage()}<Footer activePage={view.page} onNavigate={(pageId) => navigate({ page: pageId })} /><button className="floating-button" onClick={() => setChatOpen(true)}><i className="fa-solid fa-robot"></i></button><ChatbotModal isOpen={isChatOpen} close={() => setChatOpen(false)} onNavigate={navigate} /></>)}</div>);
+    };
+    
+    const Footer = ({activePage, onNavigate}) => {
+         const navItems = [ { id: 'home', icon: 'fa-home', label: 'Home' }, { id: 'matchmaking', icon: 'fa-users', label: 'Matches' }, { id: 'booking', icon: 'fa-calendar-check', label: 'Booking' }, { id: 'explore', icon: 'fa-compass', label: 'Explore'}, { id: 'profile', icon: 'fa-user', label: 'Profile' } ];
+         return (<footer className="app-footer">{navItems.map((item) => (<div key={item.id} className={`nav-item ${activePage === item.id ? 'active' : ''}`} onClick={() => onNavigate(item.id)}><i className={`fas ${item.icon}`}></i><span>{item.label}</span></div>))}</footer>);
+    }
+
+    const Root = () => (<ThemeProvider><ToastProvider><AppStateProvider><App /></AppStateProvider></ToastProvider></ThemeProvider>);
+    ReactDOM.createRoot(document.getElementById('root')).render(<React.StrictMode><Root /></React.StrictMode>);
+
+</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'991e1a523e378b4d',t:'MTc2MTAyMTg5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body></html>

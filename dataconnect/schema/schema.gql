@@ -1,0 +1,82 @@
+type UserProfile @table {
+  id: String! @default(expr: "auth.uid")
+  displayName: String! @col(dataType: "varchar(120)")
+  district: String! @col(dataType: "varchar(80)")
+  sports: [String!]!
+  playStyle: String @col(dataType: "varchar(40)")
+  reliabilityScore: Float
+}
+
+type Venue @table {
+  id: UUID! @default(expr: "uuidV4()")
+  slug: String! @unique @col(dataType: "varchar(80)")
+  name: String! @col(dataType: "varchar(120)")
+  district: String! @col(dataType: "varchar(80)")
+  sport: String! @col(dataType: "varchar(60)")
+  latitude: Float
+  longitude: Float
+  hourlyPrice: Float
+  active: Boolean! @default(expr: "true")
+}
+
+type Court @table {
+  id: UUID! @default(expr: "uuidV4()")
+  venue: Venue!
+  label: String! @col(dataType: "varchar(80)")
+  sport: String! @col(dataType: "varchar(60)")
+  targetGroupSize: Int!
+  minViableGroup: Int!
+  active: Boolean! @default(expr: "true")
+}
+
+type BookingSlot @table {
+  id: UUID! @default(expr: "uuidV4()")
+  venue: Venue!
+  court: Court!
+  district: String! @col(dataType: "varchar(80)")
+  sport: String! @col(dataType: "varchar(60)")
+  slotDate: Date!
+  startTime: Timestamp!
+  endTime: Timestamp!
+  status: String! @col(dataType: "varchar(32)")
+  targetGroupSize: Int!
+  minViableGroup: Int!
+  currentParticipantCount: Int! @default(expr: "0")
+  presetDemandScore: Float
+  probabilityScore: Float
+  offPeakOpportunityScore: Float
+}
+
+type BookingRequest @table {
+  id: UUID! @default(expr: "uuidV4()")
+  slot: BookingSlot!
+  requester: UserProfile!
+  requestedAt: Timestamp! @default(expr: "request.time")
+  allocationStatus: String! @col(dataType: "varchar(32)")
+  strategy: String! @col(dataType: "varchar(32)")
+  fairnessScore: Float
+  recommendationScore: Float
+}
+
+type SlotParticipant @table(name: "SlotParticipants", key: ["slot", "user"]) {
+  slot: BookingSlot!
+  user: UserProfile!
+  joinedAt: Timestamp! @default(expr: "request.time")
+  joinType: String! @col(dataType: "varchar(32)")
+}
+
+type WeeklyDistrictLeaderboard @table {
+  id: UUID! @default(expr: "uuidV4()")
+  district: String! @col(dataType: "varchar(80)")
+  weekKey: String! @col(dataType: "varchar(16)")
+  generatedAt: Timestamp! @default(expr: "request.time")
+}
+
+type WeeklyDistrictLeaderboardEntry @table {
+  id: UUID! @default(expr: "uuidV4()")
+  leaderboard: WeeklyDistrictLeaderboard!
+  slot: BookingSlot!
+  rank: Int!
+  opportunityScore: Float!
+  probabilityScore: Float
+}
