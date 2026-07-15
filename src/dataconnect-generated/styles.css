@@ -8722,6 +8722,463 @@ body.light .chatbot-sheet-top {
     border-radius: 14px;
 }
 
+/* ===================== Pickup Games (shared collection) ===================== */
+.pickup-page {
+    padding-bottom: 96px;
+}
+
+.pickup-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 20px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--hero-bg-start), var(--hero-bg-end));
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.pickup-hero .section-kicker {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.pickup-hero-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: 4px 0;
+}
+
+.pickup-hero-sub {
+    font-size: 0.95rem;
+    max-width: 46ch;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.pickup-host-cta {
+    white-space: nowrap;
+}
+
+.pickup-tabs {
+    display: inline-flex;
+    gap: 6px;
+    padding: 4px;
+    background: var(--stat-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 20px;
+}
+
+.pickup-tab {
+    border: none;
+    background: transparent;
+    color: var(--accent);
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all var(--transition-time) ease;
+}
+
+.pickup-tab.active {
+    background: var(--card-bg);
+    color: var(--text-color);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.pickup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.pickup-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 4px 14px var(--shadow);
+    transition: transform var(--transition-time) ease, box-shadow var(--transition-time) ease;
+}
+
+.pickup-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px var(--shadow-hover);
+}
+
+.pickup-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.pickup-sport-chip {
+    align-self: flex-start;
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    padding: 3px 8px;
+}
+
+.pickup-owner-chip {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--secondary);
+    background: var(--status-completed-bg);
+    border-radius: 8px;
+    padding: 3px 8px;
+}
+
+.pickup-card-title-btn {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 0;
+    cursor: pointer;
+    color: inherit;
+}
+
+.pickup-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 6px;
+}
+
+.pickup-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+.pickup-card-host {
+    margin: 12px 0;
+    padding: 8px 10px;
+    background: var(--stat-bg);
+    border-radius: 10px;
+}
+
+.pickup-card-host-name {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.pickup-card-footer {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pickup-spots-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* Spots-filled progress bar (Phase 2 / A7). */
+.pickup-progress-track {
+    width: 100%;
+    height: 6px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.pickup-progress-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 999px;
+    transition: width var(--transition-time) ease;
+}
+
+.pickup-card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.pickup-join-btn,
+.pickup-ghost-btn,
+.pickup-danger-btn {
+    flex: 1;
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-time) ease;
+    border: 1px solid var(--primary);
+}
+
+.pickup-join-btn {
+    background: var(--primary);
+    color: var(--btn-primary-text);
+}
+
+.pickup-join-btn:hover:not(:disabled) {
+    background: var(--primary-hover);
+}
+
+.pickup-ghost-btn {
+    background: transparent;
+    color: var(--primary);
+}
+
+.pickup-ghost-btn:hover:not(:disabled) {
+    background: var(--primary);
+    color: var(--btn-primary-text);
+}
+
+.pickup-danger-btn {
+    background: transparent;
+    color: var(--status-cancelled-text);
+    border-color: var(--status-cancelled-text);
+}
+
+.pickup-join-btn:disabled,
+.pickup-ghost-btn:disabled,
+.pickup-danger-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.pickup-subheading {
+    margin: 8px 0 14px;
+}
+
+.pickup-empty {
+    text-align: center;
+    padding: 40px 20px;
+    border: 2px dashed var(--border);
+    border-radius: 16px;
+    color: var(--accent);
+    margin-bottom: 24px;
+}
+
+.pickup-empty i {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--accent);
+}
+
+.pickup-empty p {
+    margin-bottom: 14px;
+}
+
+/* Skeleton loaders */
+.pickup-card-skeleton {
+    gap: 12px;
+}
+
+.skeleton-line {
+    height: 12px;
+    border-radius: 6px;
+    background: var(--skeleton-bg);
+    animation: pickup-skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton-line-sm { width: 40%; }
+.skeleton-line-lg { width: 80%; height: 18px; }
+
+@keyframes pickup-skeleton-pulse {
+    0%, 100% { background: var(--skeleton-bg); }
+    50% { background: var(--skeleton-pulse); }
+}
+
+/* Detail + form + roster */
+.pickup-back-link {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-weight: 700;
+    cursor: pointer;
+    padding: 4px 0;
+    margin-bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pickup-detail-card,
+.pickup-roster,
+.pickup-form {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 14px var(--shadow);
+    margin-bottom: 18px;
+}
+
+.pickup-detail-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-color);
+    margin: 8px 0;
+}
+
+.pickup-detail-desc {
+    color: var(--accent);
+    margin-bottom: 14px;
+}
+
+.pickup-detail-meta p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    margin: 6px 0;
+}
+
+.pickup-detail-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.pickup-detail-actions .pickup-join-btn,
+.pickup-detail-actions .pickup-ghost-btn,
+.pickup-detail-actions .pickup-danger-btn {
+    flex: 0 1 auto;
+    min-width: 150px;
+}
+
+.pickup-roster-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pickup-roster-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: var(--stat-bg);
+    margin-bottom: 8px;
+}
+
+.pickup-roster-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.pickup-roster-tag {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+    border-radius: 6px;
+    padding: 1px 6px;
+}
+
+.pickup-roster-tag-you {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.pickup-remove-btn {
+    background: transparent;
+    border: 1px solid var(--status-cancelled-text);
+    color: var(--status-cancelled-text);
+    border-radius: 8px;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+}
+
+.pickup-remove-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pickup-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+    flex: 1;
+}
+
+.pickup-field > span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.pickup-field-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.pickup-textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.pickup-submit {
+    width: 100%;
+    margin-top: 6px;
+}
+
+/* Inline venue map (Phase 2 / A6). */
+.pickup-map {
+    height: 260px;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 14px;
+    border: 1px solid var(--border);
+}
+
+.pickup-share-btn {
+    background: transparent;
+    border: 1px solid var(--secondary);
+    color: var(--secondary);
+    border-radius: 10px;
+    padding: 9px 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 640px) {
+    .pickup-hero { align-items: flex-start; }
+    .pickup-detail-actions .pickup-join-btn,
+    .pickup-detail-actions .pickup-ghost-btn,
+    .pickup-detail-actions .pickup-danger-btn { flex: 1 1 100%; }
+}
+
 .chatbot-composer-shell .chatbot-send-button {
     min-width: 100%;
     min-height: 42px;

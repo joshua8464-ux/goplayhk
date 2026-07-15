@@ -46,6 +46,9 @@ import AppModal from '../app/components/AppModal';
 import BottomNavigation from '../app/components/BottomNavigation';
 import { AuthPage as ExtractedAuthPage, RegisterPage as ExtractedRegisterPage, ForgotPasswordPage as ExtractedForgotPasswordPage, VerificationPendingPage as ExtractedVerificationPendingPage } from '../app/sections/auth/AuthPages';
 import HomePageView from '../app/sections/core/HomePage';
+import PickupGamesPage from '../app/sections/pickup/PickupGamesPage';
+import PickupGameDetailPage from '../app/sections/pickup/PickupGameDetailPage';
+import HostGamePage from '../app/sections/pickup/HostGamePage';
 import { submitBookingReservation } from '../app/data/bookingActions';
 import { createGeminiMatchmakingState, runGeminiMatchmakingWave } from '../app/data/matchmakingAi';
 import { buildUserCloudState, ensureUserCloudDocument, reconcileUserCloudState, saveUserCloudState, serializeUserCloudState, subscribeToUserCloudState } from '../app/data/cloudState';
@@ -4871,6 +4874,9 @@ import './styles.css'; // ← This is correct (same folder as App.jsx)
             }
             if (view.page === 'matchDetail') return <MatchDetailPage {...view.params} onBack={goBack} onNavigate={navigate} />;
             if (view.page === 'createMatch') return <CreateMatchProcess {...view.params} onBack={goBack} onNavigate={navigate} />;
+            if (view.page === 'pickupGames') return <PickupGamesPage {...view.params} initialTab={view.params?.tab} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} />;
+            if (view.page === 'pickupGameDetail') return <PickupGameDetailPage {...view.params} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} />;
+            if (view.page === 'hostGame') return <HostGamePage {...view.params} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} />;
             if (view.page === 'venueDetail') {
                 return renderDeferredPage(
                     <LazyVenueDetailPage

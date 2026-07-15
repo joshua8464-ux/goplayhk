@@ -51,6 +51,7 @@ const HomePage = ({ state, onNavigate, Header }) => {
     const recommendedVenues = state.venues.slice(0, 3);
     const friendsOnline = state.currentUser.friends.map((friendId) => state.users[friendId]).filter(Boolean);
     const quickActions = [
+        { label: 'Pickup Games', icon: 'fa-people-group', page: 'pickupGames' },
         { label: 'Join A Group', icon: 'fa-users-line', page: 'booking' },
         { label: 'Fill My Team', icon: 'fa-wand-magic-sparkles', page: 'bookingLobbies' },
         { label: 'Find Players', icon: 'fa-user-group', page: 'friendsDiscover' },

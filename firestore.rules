@@ -77,6 +77,48 @@ service cloud.firestore {
             allow write: if false;
         }
 
+        match /pickupGames/{gameId} {
+            // Publicly discoverable so shared links resolve before sign-in.
+            allow read: if true;
+
+            // Only the host can create, and they must seed themselves as the
+            // sole member.
+            allow create: if request.auth != null
+                && request.resource.data.creatorId == request.auth.uid
+                && request.resource.data.joinedPlayerIds is list
+                && request.resource.data.joinedPlayerIds.size() == 1
+                && request.resource.data.joinedPlayerIds[0] == request.auth.uid;
+
+            // The creator may edit or manage members freely; any other player
+            // may ONLY add or remove their own uid (join / leave), and joining
+            // may not exceed capacity.
+            allow update: if request.auth != null && (
+                request.auth.uid == resource.data.creatorId
+                || (
+                    request.resource.data.diff(resource.data).affectedKeys().hasOnly(['joinedPlayerIds'])
+                    && (
+                        (
+                            !(request.auth.uid in resource.data.joinedPlayerIds)
+                            && request.resource.data.joinedPlayerIds.hasOnly(resource.data.joinedPlayerIds.concat([request.auth.uid]))
+                            && request.resource.data.joinedPlayerIds.hasAll(resource.data.joinedPlayerIds)
+                            && request.resource.data.joinedPlayerIds.size() == resource.data.joinedPlayerIds.size() + 1
+                            && request.resource.data.joinedPlayerIds.size() <= resource.data.spotsTotal
+                        )
+                        || (
+                            (request.auth.uid in resource.data.joinedPlayerIds)
+                            && !(request.auth.uid in request.resource.data.joinedPlayerIds)
+                            && resource.data.joinedPlayerIds.hasOnly(request.resource.data.joinedPlayerIds.concat([request.auth.uid]))
+                            && resource.data.joinedPlayerIds.hasAll(request.resource.data.joinedPlayerIds)
+                            && request.resource.data.joinedPlayerIds.size() == resource.data.joinedPlayerIds.size() - 1
+                        )
+                    )
+                )
+            );
+
+            allow delete: if request.auth != null
+                && request.auth.uid == resource.data.creatorId;
+        }
+
         match /{document=**} {
             allow read, write: if false;
         }
