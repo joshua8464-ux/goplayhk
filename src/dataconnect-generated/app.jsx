@@ -46,9 +46,6 @@ import AppModal from '../app/components/AppModal';
 import BottomNavigation from '../app/components/BottomNavigation';
 import { AuthPage as ExtractedAuthPage, RegisterPage as ExtractedRegisterPage, ForgotPasswordPage as ExtractedForgotPasswordPage, VerificationPendingPage as ExtractedVerificationPendingPage } from '../app/sections/auth/AuthPages';
 import HomePageView from '../app/sections/core/HomePage';
-import PickupGamesPage from '../app/sections/pickup/PickupGamesPage';
-import PickupGameDetailPage from '../app/sections/pickup/PickupGameDetailPage';
-import HostGamePage from '../app/sections/pickup/HostGamePage';
 import { readSharedGameId } from '../app/data/pickupGames';
 import { submitBookingReservation } from '../app/data/bookingActions';
 import { createGeminiMatchmakingState, runGeminiMatchmakingWave } from '../app/data/matchmakingAi';
@@ -122,6 +119,9 @@ import './styles.css'; // ← This is correct (same folder as App.jsx)
         const LazyClubDetailPage = lazy(() => loadAccountPages().then((module) => ({ default: module.ClubDetailPage })));
         const LazyRewardsPage = lazy(() => loadAccountPages().then((module) => ({ default: module.RewardsPage })));
         const LazyChatbot = lazy(() => loadChatbotModule());
+        const LazyPickupGamesPage = lazy(() => import('../app/sections/pickup/PickupGamesPage'));
+        const LazyPickupGameDetailPage = lazy(() => import('../app/sections/pickup/PickupGameDetailPage'));
+        const LazyHostGamePage = lazy(() => import('../app/sections/pickup/HostGamePage'));
 
         const DeferredPageShell = ({ title, detail = 'Preparing this section without blocking your main flow.' }) => (
             <div className="page-content tech-page">
@@ -4894,9 +4894,9 @@ import './styles.css'; // ← This is correct (same folder as App.jsx)
             }
             if (view.page === 'matchDetail') return <MatchDetailPage {...view.params} onBack={goBack} onNavigate={navigate} />;
             if (view.page === 'createMatch') return <CreateMatchProcess {...view.params} onBack={goBack} onNavigate={navigate} />;
-            if (view.page === 'pickupGames') return <PickupGamesPage {...view.params} initialTab={view.params?.tab} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} theme={theme} />;
-            if (view.page === 'pickupGameDetail') return <PickupGameDetailPage {...view.params} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} theme={theme} />;
-            if (view.page === 'hostGame') return <HostGamePage {...view.params} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} theme={theme} />;
+            if (view.page === 'pickupGames') return renderDeferredPage(<LazyPickupGamesPage {...view.params} initialTab={view.params?.tab} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} theme={theme} />, 'Loading pickup games');
+            if (view.page === 'pickupGameDetail') return renderDeferredPage(<LazyPickupGameDetailPage {...view.params} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} theme={theme} />, 'Loading game');
+            if (view.page === 'hostGame') return renderDeferredPage(<LazyHostGamePage {...view.params} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} theme={theme} />, 'Loading host form');
             if (view.page === 'venueDetail') {
                 return renderDeferredPage(
                     <LazyVenueDetailPage

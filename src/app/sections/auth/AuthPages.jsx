@@ -166,12 +166,13 @@ const authenticateWithGooglePopup = async (auth, rememberLogin) => {
 };
 
 const shouldUseGoogleRedirectFlow = () => {
-    if (typeof window === 'undefined') {
-        return false;
-    }
-
-    const hostname = window.location.hostname.toLowerCase();
-    return import.meta.env.PROD && (hostname.endsWith('.web.app') || hostname.endsWith('.firebaseapp.com'));
+    // Prefer popup sign-in everywhere. On *.web.app the OAuth handler lives on a
+    // different domain (*.firebaseapp.com), so signInWithRedirect loses its
+    // result to browser third-party-storage partitioning and bounces the user
+    // back to the welcome screen. Popup completes in the same browsing context
+    // (the COOP header is already `same-origin-allow-popups`); we still fall
+    // back to redirect automatically if a popup is actually blocked.
+    return false;
 };
 
 export const AuthPage = ({ auth, showToast, onLogin, onVerificationPending, setView, Modal }) => {
