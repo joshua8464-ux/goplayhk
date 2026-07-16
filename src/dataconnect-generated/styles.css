@@ -9257,6 +9257,157 @@ body.light .chatbot-sheet-top {
     transition: width var(--transition-time) ease;
 }
 
+/* ---- BookingPage "Command deck" + "Market signal" cards (restored layout) ----
+   These class families were missing from the stylesheet, so the section
+   collapsed with no grid/spacing and overlapped. Styled to match the page's
+   existing dark control-room cards (see .booking-entry-card). */
+.booking-command-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: 16px;
+    margin-top: 18px;
+    align-items: start;
+}
+
+.booking-command-card {
+    border: 1px solid rgba(138, 179, 255, 0.14);
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(9, 19, 35, 0.92) 0%, rgba(7, 16, 31, 0.98) 100%);
+    color: #edf4ff;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+.booking-command-card .section-title {
+    color: #edf4ff;
+}
+
+.booking-command-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.booking-command-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(138, 179, 255, 0.12);
+    background: rgba(10, 20, 38, 0.6);
+    min-width: 0;
+}
+
+.booking-command-metric span {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(223, 233, 250, 0.6);
+}
+
+.booking-command-metric strong {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #edf4ff;
+    line-height: 1.2;
+}
+
+.booking-command-metric small {
+    font-size: 0.75rem;
+    color: rgba(223, 233, 250, 0.7);
+}
+
+.booking-command-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.booking-command-line,
+.booking-market-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(138, 179, 255, 0.1);
+}
+
+.booking-command-line:last-child,
+.booking-market-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.booking-command-line span,
+.booking-market-row span {
+    color: rgba(223, 233, 250, 0.6);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.booking-command-line strong,
+.booking-market-row strong {
+    color: #edf4ff;
+    font-weight: 700;
+    text-align: right;
+    min-width: 0;
+}
+
+.booking-command-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.booking-command-actions .btn-primary,
+.booking-command-actions .btn-secondary {
+    flex: 1 1 auto;
+}
+
+.booking-market-highlight {
+    border: 1px solid rgba(138, 179, 255, 0.14);
+    border-radius: 18px;
+    background: rgba(10, 20, 38, 0.6);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.booking-market-highlight h4 {
+    margin: 0;
+    color: #edf4ff;
+    font-size: 1.05rem;
+}
+
+.booking-market-highlight p {
+    margin: 0;
+    color: rgba(223, 233, 250, 0.72);
+    font-size: 0.9rem;
+}
+
+.booking-market-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media (max-width: 860px) {
+    .booking-command-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-command-metrics {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 640px) {
     .pickup-hero { align-items: flex-start; }
     .pickup-detail-actions .pickup-join-btn,
