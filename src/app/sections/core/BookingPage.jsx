@@ -795,7 +795,6 @@ const BookingPage = ({
                     ) : null}
 
                 </div>
-            </section>
 
             <div className="booking-tablet-summary-grid">
                 <section className="booking-hub-grid fade-in">
@@ -841,6 +840,7 @@ const BookingPage = ({
                     </section>
                 )}
             </div>
+            </section>
 
             {bookingBoard.joinRandomOptions.length > 0 && (
                 <section className="panel-stack fade-in mt-4">

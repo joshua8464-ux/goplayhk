@@ -9408,6 +9408,38 @@ body.light .chatbot-sheet-top {
     }
 }
 
+/* Booking reservation grid (desktop): keep the map's short left column filled
+   with the summary cards instead of a big empty gap, aligned beside the taller
+   control panel (Live teammates) on the right. */
+@media (min-width: 1024px) {
+    .bookings-page .map-control-grid > .booking-map-experience {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .bookings-page .map-control-grid > .booking-control-panel {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        align-self: start;
+    }
+
+    /* Override the default display:contents so the summary becomes a real grid
+       item that we can drop into the left column, row 2 (under the map). */
+    .bookings-page .map-control-grid > .booking-tablet-summary-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        grid-column: 1;
+        grid-row: 2;
+        min-width: 0;
+        margin: 0;
+    }
+
+    .bookings-page .map-control-grid > .booking-tablet-summary-grid > section {
+        margin: 0;
+    }
+}
+
 @media (max-width: 640px) {
     .pickup-hero { align-items: flex-start; }
     .pickup-detail-actions .pickup-join-btn,
