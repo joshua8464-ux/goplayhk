@@ -49,6 +49,7 @@ import HomePageView from '../app/sections/core/HomePage';
 import PickupGamesPage from '../app/sections/pickup/PickupGamesPage';
 import PickupGameDetailPage from '../app/sections/pickup/PickupGameDetailPage';
 import HostGamePage from '../app/sections/pickup/HostGamePage';
+import { readSharedGameId } from '../app/data/pickupGames';
 import { submitBookingReservation } from '../app/data/bookingActions';
 import { createGeminiMatchmakingState, runGeminiMatchmakingWave } from '../app/data/matchmakingAi';
 import { buildUserCloudState, ensureUserCloudDocument, reconcileUserCloudState, saveUserCloudState, serializeUserCloudState, subscribeToUserCloudState } from '../app/data/cloudState';
@@ -4735,6 +4736,25 @@ import './styles.css'; // ← This is correct (same folder as App.jsx)
             }
         };
 
+        // Resolve a shared pickup-game deep link (?game=<id>) once signed in.
+        useEffect(() => {
+            if (!isAuthenticated || !authResolved) {
+                return;
+            }
+
+            const sharedGameId = readSharedGameId(typeof window !== 'undefined' ? window.location.search : '');
+            if (!sharedGameId) {
+                return;
+            }
+
+            navigate({ page: 'pickupGameDetail', params: { gameId: sharedGameId } });
+
+            if (typeof window !== 'undefined' && window.history?.replaceState) {
+                window.history.replaceState({}, '', window.location.pathname);
+            }
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [isAuthenticated, authResolved]);
+
         const renderPrimaryPage = () => {
             if (view.page === 'home') return <HomePageView state={state} onNavigate={navigate} Header={Header} />;
             if (view.page === 'explore') {
@@ -4874,9 +4894,9 @@ import './styles.css'; // ← This is correct (same folder as App.jsx)
             }
             if (view.page === 'matchDetail') return <MatchDetailPage {...view.params} onBack={goBack} onNavigate={navigate} />;
             if (view.page === 'createMatch') return <CreateMatchProcess {...view.params} onBack={goBack} onNavigate={navigate} />;
-            if (view.page === 'pickupGames') return <PickupGamesPage {...view.params} initialTab={view.params?.tab} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} />;
-            if (view.page === 'pickupGameDetail') return <PickupGameDetailPage {...view.params} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} />;
-            if (view.page === 'hostGame') return <HostGamePage {...view.params} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} />;
+            if (view.page === 'pickupGames') return <PickupGamesPage {...view.params} initialTab={view.params?.tab} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} theme={theme} />;
+            if (view.page === 'pickupGameDetail') return <PickupGameDetailPage {...view.params} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} theme={theme} />;
+            if (view.page === 'hostGame') return <HostGamePage {...view.params} state={state} onNavigate={navigate} onBack={goBack} showToast={showToast} Header={Header} theme={theme} />;
             if (view.page === 'venueDetail') {
                 return renderDeferredPage(
                     <LazyVenueDetailPage

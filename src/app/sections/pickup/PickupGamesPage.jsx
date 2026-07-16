@@ -1,29 +1,62 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import PickupGameCard from './PickupGameCard';
-import { joinPickupGame, splitMyGames, subscribeToPickupGames } from '../../data/pickupGames';
+import {
+    DEFAULT_PICKUP_PAGE_SIZE,
+    decoratePickupGame,
+    fetchPickupGamesPage,
+    joinPickupGame,
+    splitMyGames,
+    subscribeToPickupGames
+} from '../../data/pickupGames';
 
-const PickupGamesPage = ({ state, onNavigate, showToast, Header, initialTab = 'discover' }) => {
+const PickupGamesPage = ({ state, onNavigate, showToast, Header, theme = 'light', initialTab = 'discover' }) => {
     const currentUserId = state?.currentUser?.id || '';
     const [tab, setTab] = useState(initialTab === 'mine' ? 'mine' : 'discover');
+
     const [discoverGames, setDiscoverGames] = useState([]);
-    const [myGames, setMyGames] = useState([]);
     const [loadingDiscover, setLoadingDiscover] = useState(true);
+    const [loadingMore, setLoadingMore] = useState(false);
+    const [hasMore, setHasMore] = useState(false);
+    const cursorRef = useRef(null);
+
+    const [myGames, setMyGames] = useState([]);
     const [loadingMine, setLoadingMine] = useState(true);
     const [busyGameId, setBusyGameId] = useState('');
 
+    // Discover: real cursor pagination (startAfter), not a re-fetch of page 1.
+    const loadDiscover = useCallback(async ({ append = false } = {}) => {
+        if (append) {
+            setLoadingMore(true);
+        } else {
+            setLoadingDiscover(true);
+            cursorRef.current = null;
+        }
+
+        try {
+            const { games, hasMore: more, cursor } = await fetchPickupGamesPage({
+                pageSize: DEFAULT_PICKUP_PAGE_SIZE,
+                cursor: append ? cursorRef.current : null
+            });
+            cursorRef.current = cursor;
+            setHasMore(more);
+            setDiscoverGames((prev) => (append ? [...prev, ...games] : games));
+        } catch (error) {
+            showToast?.(error?.message || 'Could not load games.', 'error');
+            if (!append) {
+                setDiscoverGames([]);
+            }
+        } finally {
+            setLoadingDiscover(false);
+            setLoadingMore(false);
+        }
+    }, [showToast]);
+
     useEffect(() => {
-        setLoadingDiscover(true);
-        const unsubscribe = subscribeToPickupGames({}, (games) => {
-            setDiscoverGames(games);
-            setLoadingDiscover(false);
-        }, () => {
-            setDiscoverGames([]);
-            setLoadingDiscover(false);
-        });
+        loadDiscover({ append: false });
+    }, [loadDiscover]);
 
-        return unsubscribe;
-    }, []);
-
+    // My Games stays live (small, personal): array-contains uid returns both
+    // hosted and joined, which we split locally.
     useEffect(() => {
         if (!currentUserId) {
             setMyGames([]);
@@ -51,6 +84,12 @@ const PickupGamesPage = ({ state, onNavigate, showToast, Header, initialTab = 'd
         setBusyGameId(game.id);
         try {
             await joinPickupGame(game.id);
+            // Optimistically reflect the join without refetching the whole page.
+            setDiscoverGames((prev) => prev.map((entry) => (
+                entry.id === game.id
+                    ? decoratePickupGame({ ...entry, joinedPlayerIds: [...(entry.joinedPlayerIds || []), currentUserId] })
+                    : entry
+            )));
             showToast?.('You joined the game. See you on the court!', 'success');
         } catch (error) {
             showToast?.(error?.message || 'Could not join this game.', 'error');
@@ -79,6 +118,7 @@ const PickupGamesPage = ({ state, onNavigate, showToast, Header, initialTab = 'd
                         onOpen={openGame}
                         onJoin={handleJoin}
                         busy={busyGameId === game.id}
+                        theme={theme}
                     />
                 ))}
             </div>
@@ -141,6 +181,19 @@ const PickupGamesPage = ({ state, onNavigate, showToast, Header, initialTab = 'd
                     {loadingDiscover
                         ? renderSkeleton()
                         : renderGrid(discoverGames, 'No games have been posted yet. Be the first to host one!')}
+
+                    {!loadingDiscover ? (
+                        <div className="pickup-load-more">
+                            <button type="button" className="pickup-load-more-btn" onClick={() => loadDiscover({ append: false })} disabled={loadingMore}>
+                                <i className="fas fa-rotate-right" aria-hidden="true"></i> Refresh
+                            </button>
+                            {hasMore ? (
+                                <button type="button" className="pickup-load-more-btn" onClick={() => loadDiscover({ append: true })} disabled={loadingMore}>
+                                    {loadingMore ? 'Loading…' : 'Load more'}
+                                </button>
+                            ) : null}
+                        </div>
+                    ) : null}
                 </section>
             ) : (
                 <section className="fade-in pickup-mine">

@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import PickupMap from './PickupMap';
 import {
+    buildShareUrl,
     canUserJoin,
     deletePickupGame,
     hasUserJoined,
@@ -29,12 +31,13 @@ const formatSchedule = (value) => {
     });
 };
 
-const PickupGameDetailPage = ({ gameId, state, onBack, onNavigate, showToast, Header }) => {
+const PickupGameDetailPage = ({ gameId, state, onBack, onNavigate, showToast, Header, theme = 'light' }) => {
     const currentUserId = state?.currentUser?.id || '';
     const [game, setGame] = useState(null);
     const [loading, setLoading] = useState(true);
     const [notFound, setNotFound] = useState(false);
     const [busy, setBusy] = useState(false);
+    const [showMap, setShowMap] = useState(false);
 
     useEffect(() => {
         if (!gameId) {
@@ -91,6 +94,23 @@ const PickupGameDetailPage = ({ gameId, state, onBack, onNavigate, showToast, He
         onNavigate({ page: 'pickupGames', params: { tab: 'mine' } });
     });
 
+    const handleShare = async () => {
+        const shareUrl = buildShareUrl(typeof window !== 'undefined' ? window.location.origin : '', gameId);
+        try {
+            if (navigator?.share) {
+                await navigator.share({ title: game?.title || 'Pickup game', url: shareUrl });
+                return;
+            }
+
+            await navigator.clipboard.writeText(shareUrl);
+            showToast?.('Share link copied to clipboard.', 'success');
+        } catch {
+            showToast?.(shareUrl, 'info');
+        }
+    };
+
+    const hasLocation = Number.isFinite(Number(game?.lat)) && Number.isFinite(Number(game?.lng));
+
     if (loading) {
         return (
             <div className="page-content tech-page pickup-page">
@@ -141,6 +161,14 @@ const PickupGameDetailPage = ({ gameId, state, onBack, onNavigate, showToast, He
                     <p><i className="fas fa-users" aria-hidden="true"></i> {game.joinCount}/{game.spotsTotal} players ({game.spotsRemaining} spot{game.spotsRemaining === 1 ? '' : 's'} left)</p>
                 </div>
 
+                <div className="pickup-progress-track" role="progressbar" aria-valuenow={game.fillPercent} aria-valuemin={0} aria-valuemax={100}>
+                    <div className="pickup-progress-fill" style={{ width: `${game.fillPercent}%` }}></div>
+                </div>
+
+                {showMap && hasLocation ? (
+                    <PickupMap lat={game.lat} lng={game.lng} label={game.venueName} theme={theme} height="260px" />
+                ) : null}
+
                 <div className="pickup-detail-actions">
                     {isCreator ? (
                         <button type="button" className="pickup-danger-btn" onClick={handleDelete} disabled={busy}>
@@ -155,6 +183,14 @@ const PickupGameDetailPage = ({ gameId, state, onBack, onNavigate, showToast, He
                             {game.isFull ? 'Full' : busy ? 'Joining…' : 'Join game'}
                         </button>
                     )}
+                    {hasLocation ? (
+                        <button type="button" className="pickup-ghost-btn" onClick={() => setShowMap((prev) => !prev)}>
+                            <i className="fas fa-map-location-dot" aria-hidden="true"></i> {showMap ? 'Hide map' : 'Show map'}
+                        </button>
+                    ) : null}
+                    <button type="button" className="pickup-share-btn" onClick={handleShare}>
+                        <i className="fas fa-share-nodes" aria-hidden="true"></i> Share
+                    </button>
                 </div>
             </section>
 

@@ -9172,6 +9172,74 @@ body.light .chatbot-sheet-top {
     gap: 8px;
 }
 
+.pickup-card-head-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pickup-map-toggle {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--accent);
+    border-radius: 8px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: all var(--transition-time) ease;
+}
+
+.pickup-map-toggle:hover,
+.pickup-map-toggle[aria-pressed="true"] {
+    border-color: var(--secondary);
+    color: var(--secondary);
+}
+
+.pickup-spots-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pickup-map-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    color: var(--accent);
+    font-size: 0.85rem;
+    background: var(--stat-bg);
+}
+
+.pickup-load-more {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 8px 0 24px;
+    flex-wrap: wrap;
+}
+
+.pickup-load-more-btn {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    border-radius: 12px;
+    padding: 10px 22px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-time) ease;
+}
+
+.pickup-load-more-btn:hover:not(:disabled) {
+    background: var(--primary);
+    color: var(--btn-primary-text);
+}
+
+.pickup-load-more-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 @media (max-width: 640px) {
     .pickup-hero { align-items: flex-start; }
     .pickup-detail-actions .pickup-join-btn,
