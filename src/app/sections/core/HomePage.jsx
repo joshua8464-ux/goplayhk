@@ -4,6 +4,8 @@ import { buildCompatibility } from '../../data/matchmaking';
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
+const spotsPercent = (current, total) => `${Math.min((Number(current) / Math.max(Number(total), 1)) * 100, 100)}%`;
+
 const getSportIcon = (sport) => {
     switch (sport.toLowerCase()) {
         case 'tennis':
@@ -268,6 +270,9 @@ const HomePage = ({ state, onNavigate, Header }) => {
                                         <span className="signal-badge"><i className="fas fa-users" aria-hidden="true"></i>{(slot.participantIds || []).length}/{slot.targetGroupSize}</span>
                                         <span className="signal-badge"><i className="fas fa-wave-square" aria-hidden="true"></i>{buildLiveSlotProbability(slot)}% likely</span>
                                     </div>
+                                    <div className="spots-meter" aria-hidden="true">
+                                        <div className="spots-meter-fill" style={{ width: spotsPercent((slot.participantIds || []).length, slot.targetGroupSize) }}></div>
+                                    </div>
                                 </div>
                             </button>
                         ))}
@@ -310,6 +315,9 @@ const HomePage = ({ state, onNavigate, Header }) => {
                                 <span className="section-kicker">{match.sport} • {venueById[match.venueId]?.location || 'District pending'}</span>
                                 <h4>{venueById[match.venueId]?.name || 'Venue'} needs {Math.max(match.totalSlots - match.participants.length, 0)} more</h4>
                                 <p>{match.date} • {match.time} • {match.participants.length}/{match.totalSlots} confirmed</p>
+                                <div className="spots-meter" aria-hidden="true">
+                                    <div className="spots-meter-fill" style={{ width: spotsPercent(match.participants.length, match.totalSlots) }}></div>
+                                </div>
                                 <div className="signal-badge-row">
                                     <span className="signal-badge">{match.matchmaking?.confidence || 0}% AI fit</span>
                                     <span className="signal-badge">{match.matchmaking?.status || 'manual'}</span>
@@ -421,6 +429,9 @@ const HomePage = ({ state, onNavigate, Header }) => {
                                     {match.status.charAt(0).toUpperCase() + match.status.slice(1)}
                                 </span>
                                 <span className="booking-card-count">{match.participants.length}/{match.totalSlots} players</span>
+                                <div className="spots-meter" aria-hidden="true">
+                                    <div className="spots-meter-fill" style={{ width: spotsPercent(match.participants.length, match.totalSlots) }}></div>
+                                </div>
                             </div>
                         </button>
                     );
